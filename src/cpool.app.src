@@ -1,0 +1,9 @@
+%% -*- erlang -*-
+{application, cpool,
+ [{description, "cpool"},
+  {vsn, "0.1"},
+  {modules, []},
+  {registered, []},
+  {mod, {'cpool_app', []}},
+  {env, []},
+  {applications, [kernel, stdlib, crypto]}]}.
