@@ -1,1 +1,2 @@
 This is a memcached connection pools for PHP.
+You can use it as  Redis pool too.
