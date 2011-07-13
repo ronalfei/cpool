@@ -1,3 +1,12 @@
+%%% -------------------------------------------------------------------
+%%% Author  :   BlackAnimal  <ronalfei@gmail.com> or <ronalfei@qq.com> 
+%%% Description :
+%%%
+%%% Created : 2011-7-11
+%%% -------------------------------------------------------------------
+
+
+
 -module(cpool_connect).
 -compile(export_all).
 -include("cpool.hrl").

@@ -1,8 +1,8 @@
 %%% -------------------------------------------------------------------
-%%% Author  : WANGFEI6
+%%% Author  :   BlackAnimal  <ronalfei@gmail.com> or <ronalfei@qq.com> 
 %%% Description :
 %%%
-%%% Created : 2011-1-28
+%%% Created : 2011-7-11
 %%% -------------------------------------------------------------------
 -module(cpool_pooler).
 

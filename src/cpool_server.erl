@@ -1,5 +1,5 @@
 %%% -------------------------------------------------------------------
-%%% Author  : WANGFEI6
+%%% Author  :	BlackAnimal  <ronalfei@gmail.com> or <ronalfei@qq.com> 
 %%% Description :
 %%%
 %%% Created : 2011-1-28

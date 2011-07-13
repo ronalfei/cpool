@@ -1,8 +1,9 @@
-%% @author Mochi Media <dev@mochimedia.com>
-%% @copyright 2010 Mochi Media <dev@mochimedia.com>
-
-%% @doc Supervisor for the pfpm application.
-
+%%% -------------------------------------------------------------------
+%%% Author  :   BlackAnimal  <ronalfei@gmail.com> or <ronalfei@qq.com> 
+%%% Description :
+%%%
+%%% Created : 2011-7-11
+%%% -------------------------------------------------------------------
 -module(cpool_sup).
 -author("BlackAnimal <ronalfei@gmail.com> or <ronalfei@qq.com>").
 
