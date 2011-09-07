@@ -91,7 +91,7 @@ handle_call(get_socket, _From, State) ->
 			end;
 		Numbers == 1 ->
 			[HSocket|_] = Sockets,
-			case cpool_connect:connect(cpool_connect:config()) of
+			case cpool_connect:connect(get_connect_config()) of
 				{ok, SecondSocket} ->
 					?dbg2("Dynamic Create Pool Socket Ok : ~p ", [SecondSocket]),
 					{reply, HSocket, #states{sockets=[SecondSocket], numbers=1}};
