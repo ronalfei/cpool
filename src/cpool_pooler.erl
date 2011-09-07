@@ -81,7 +81,7 @@ handle_call(get_socket, _From, State) ->
 
 	if
 		Numbers == 0 ->
-			case cpool_connect:connect(cpool_connect:config()) of
+			case cpool_connect:connect(get_connect_config()) of
 				{ok, LastSocket} ->
 					?dbg2("Dynamic Create Pool Socket Ok : ~p ", [LastSocket]),
 					{reply, LastSocket, #states{sockets=[], numbers=0}};
@@ -173,15 +173,23 @@ code_change(_OldVsn, State, _Extra) ->
 %%% Internal functions
 %% --------------------------------------------------------------------
 
+
 connect(Socket_lists, 0) ->
     Socket_lists;
 
 connect(Socket_lists, Pool_numbers) ->
-    case cpool_connect:connect(cpool_connect:config()) of
+	Config = get_connect_config(),
+    case cpool_connect:connect(Config) of
         {ok,Socket} ->
             connect([Socket|Socket_lists], Pool_numbers-1);
         {error, Reason} ->
             ?dbg2("Connect Error: ~p, Pool_number: ~p ", [Reason, Pool_numbers]),
             connect(Socket_lists, Pool_numbers)
     end.
+
+get_connect_config() ->
+    Host = ?TARGET_HOST,
+    Port = ?TARGET_PORT,
+    [{host,Host},{port,Port},{timeout,5}].
+
 

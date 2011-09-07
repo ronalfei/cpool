@@ -36,16 +36,10 @@
 %  serving the client (this shouldn't normally happen), the server will
 %  close the connection after sending the error line. This is the only
 %  case in which the server closes a connection to a client.
+%-----------------------------------------
 
 
-
-
-config() ->
-	Host = ?TARGET_HOST,
-	Port = ?TARGET_PORT,
-	[{host,Host},{port,Port},{timeout,5}].
-
-connect(Config) ->		
+connect(Config) ->
 	[{host,Host},{port,Port},{timeout,Timeout}] = Config,
 	%?dbg2("Connecting... Host: ~p,Port : ~p ",[Host,Port]),
 	gen_tcp:connect(Host,Port,[binary,{packet,0},{active,false}],Timeout). 

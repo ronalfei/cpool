@@ -8,8 +8,8 @@
 -define(LISTEN_PORT,11111).
 
 
-%-define(TARGET_HOST,"127.0.0.1").
--define(TARGET_HOST,"10.100.6.152").
+-define(TARGET_HOST,"127.0.0.1").
+%-define(TARGET_HOST,"10.100.6.152").
 -define(TARGET_PORT,11211).
 
 -define(POOLS,5).   % how many pools will you start
@@ -18,4 +18,4 @@
 -define(SERVERS,5). % how many process to listen Port
 
 -define(MIN_POOL_NUMBERS,2).  % min links for per pool
--define(MAX_POOL_NUMBERS,190).  % max links for per pool
+-define(MAX_POOL_NUMBERS,20).  % max links for per pool
