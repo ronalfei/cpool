@@ -149,7 +149,10 @@ server_loop(Socket) ->
 			?dbg2("Server recevied data: ~p", [Data]),	
 			PoolName = get_rand_pool_name(),
 			PoolSocket = cpool_pooler:get_socket(PoolName),
-			Respond = cpool_connect:raw(PoolSocket,Data),		
+			Respond = case cpool_connect:raw(PoolSocket,Data) of
+				{error, closed} -> gen_tcp:close(PoolSocket), <<"Pool connection closed\r\n">> ; %close it,if the PoolSocket is not alived;
+				{_, Ret} -> Ret 
+			end,
 			?dbg2("respond: ~p", [Respond]),	
 			gen_tcp:send(Socket, Respond),
 			server_loop1(PoolName, Socket, PoolSocket);
@@ -163,7 +166,10 @@ server_loop1(PoolName, Socket, PoolSocket) ->
 	receive
 		{tcp, Socket, Data} -> 
 			?dbg2("recevied data: ~p", [Data]),	
-			Respond = cpool_connect:raw(PoolSocket,Data),
+			Respond = case cpool_connect:raw(PoolSocket,Data) of
+				{error, closed} -> gen_tcp:close(PoolSocket), <<"Pool connection closed\r\n">> ; %close it,if the PoolSocket is not alived;
+				{_, Ret} -> Ret 
+			end,
 			?dbg2("respond: ~p", [Respond]),			
 			gen_tcp:send(Socket, Respond),
 			server_loop1(PoolName, Socket, PoolSocket);

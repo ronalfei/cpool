@@ -52,8 +52,7 @@ raw(Socket,RawData) ->
 			<<"CLIENT_ERROR <Get socket from pool failed>\r\n">>;
 		_ ->
 			gen_tcp:send(Socket,RawData),
-		    {_,Ret} = gen_tcp:recv(Socket,0),
-    		Ret
+		    gen_tcp:recv(Socket,0)
 	end.
 
 %-----------for memcache client------------------
