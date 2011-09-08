@@ -150,7 +150,7 @@ server_loop(Socket) ->
 			PoolName = get_rand_pool_name(),
 			PoolSocket = cpool_pooler:get_socket(PoolName),
 			Respond = cpool_connect:raw(PoolSocket,Data),		
-			?dbg2("respond: ~p", [Respond]),			
+			?dbg2("respond: ~p", [Respond]),	
 			gen_tcp:send(Socket, Respond),
 			server_loop1(PoolName, Socket, PoolSocket);
 		{tcp_closed, Socket} ->
