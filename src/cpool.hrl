@@ -1,15 +1,14 @@
--define(dbg1(Data), io:format("*dbg ~p:~p: ~p ~n", [?MODULE, ?LINE, Data])).
--define(dbg2(Fmt,Data), io:format("*dbg ~p:~p: "++Fmt++"~n ", [?MODULE, ?LINE | Data])).
+%-define(dbg1(Data), io:format("*dbg ~p:~p: ~p ~n", [?MODULE, ?LINE, Data])).
+%-define(dbg2(Fmt,Data), io:format("*dbg ~p:~p: "++Fmt++"~n ", [?MODULE, ?LINE | Data])).
 
 
-%-define(dbg1(Data),"").
-%-define(dbg2(Fmt,Data),"").
+-define(dbg1(Data),"").
+-define(dbg2(Fmt,Data),"").
 
 -define(LISTEN_PORT,11111).
 
 
 -define(TARGET_HOST,"127.0.0.1").
-%-define(TARGET_HOST,"10.100.6.152").
 -define(TARGET_PORT,11211).
 
 -define(POOLS,5).   % how many pools will you start

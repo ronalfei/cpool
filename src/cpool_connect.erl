@@ -110,29 +110,3 @@ parse_mlist( [H1, H2 |Tail] ) ->
 	V = H2,
 	[ {K, V} | parse_mlist(Tail)].
 
-%%---------test-----------------------
-test() ->
-%	?MODULE:guess(),
-	Config = ?MODULE:config(),
-	case ?MODULE:connect(Config) of 
-		{ok,Socket} ->
-			?dbg2("Socket:  ~p",[Socket]),
-			?MODULE:set(Socket,"a","AA"),
-			?MODULE:set(Socket,"b","BB"),
-			?MODULE:set(Socket,"c","CC",3),
-			?MODULE:set(Socket,"d","DD"),
-			?MODULE:set(Socket,"e","EE"),
-			?MODULE:set(Socket,"f","FF"),
-
-			L = ["a","b","c","d","e","f"],
-			Ret1 	=	?MODULE:mget(Socket,L),
-			Ret2	=	?MODULE:get(Socket,"a"),
-			 
-			?dbg2("~n Ret1: ~p ~n Ret2: ~p ~n",[Ret1,Ret2]),
-			?MODULE:close(Socket);
-		{error,Reason} -> ?dbg2("Error Reason :~p",[Reason])
-	end.
-
-
-
-

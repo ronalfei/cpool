@@ -137,14 +137,15 @@ server_accept(ListenSocket) ->
 	case gen_tcp:accept(ListenSocket) of
 		{ok, Socket} ->
 			spawn(fun() -> server_accept(ListenSocket) end ),
-			?dbg1("spawning OK."),
-			?MODULE:server_loop(Socket),
-			?dbg2("Server accepted:~p ,goto Loop", [Socket]); 
+			?dbg2("Server accepted:~p ,goto Loop", [Socket]),
+			?MODULE:server_loop(Socket);
 		Other -> ?dbg2("accept return: ~p ~n",[Other])
 	end.
 
 server_loop(Socket) ->
 	receive
+		{tcp, Socket, <<"QUIT">>} -> 
+			?dbg2("socket: ~p received: QUIT ,so close ~p ", [Socket,self()]);
 		{tcp, Socket, Data} -> 
 			?dbg2("Server recevied data: ~p", [Data]),	
 			PoolName = get_rand_pool_name(),
@@ -164,6 +165,9 @@ server_loop(Socket) ->
 
 server_loop1(PoolName, Socket, PoolSocket) -> 
 	receive
+		{tcp, Socket, <<"QUIT">>} ->
+			cpool_pooler:free_socket(PoolName, PoolSocket),
+            ?dbg2("socket: ~p received: QUIT ,so close ~p ,free PoolSocket: ~p ", [Socket, self(), PoolSocket]);
 		{tcp, Socket, Data} -> 
 			?dbg2("recevied data: ~p", [Data]),	
 			Respond = case cpool_connect:raw(PoolSocket,Data) of
