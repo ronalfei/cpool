@@ -1,9 +1,9 @@
-%-define(dbg1(Data), io:format("*dbg ~p:~p: ~p ~n", [?MODULE, ?LINE, Data])).
-%-define(dbg2(Fmt,Data), io:format("*dbg ~p:~p: "++Fmt++"~n ", [?MODULE, ?LINE | Data])).
+-define(dbg1(Data), io:format("*dbg ~p:~p: ~p ~n", [?MODULE, ?LINE, Data])).
+-define(dbg2(Fmt,Data), io:format("*dbg ~p:~p: "++Fmt++"~n ", [?MODULE, ?LINE | Data])).
 
 
--define(dbg1(Data),"").
--define(dbg2(Fmt,Data),"").
+%-define(dbg1(Data),"").
+%-define(dbg2(Fmt,Data),"").
 
 -define(LISTEN_PORT,11111).
 
