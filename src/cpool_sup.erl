@@ -29,7 +29,7 @@ start() ->
 init([]) ->
 	
 	Server = {cpool_server,
-        {cpool_server, start, []},
+        {cpool_server, start_link, []},
         permanent, 5000, worker, dynamic},
 
 	Pools = get_pools(?POOLS, [Server]),
@@ -50,7 +50,7 @@ get_pools(N,Pools) ->
 	PoolName = list_to_atom(?POOL_PREFIX ++ integer_to_list(N)),
 	?dbg2("PoolName = ~p", [PoolName]),
 	H = {PoolName,
-			{cpool_pooler, start, [PoolName]},
+			{cpool_pooler, start_link, [PoolName]},
 			permanent, 5000, worker, dynamic},
 	get_pools(N-1,[H|Pools]).
 
