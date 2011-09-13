@@ -158,7 +158,8 @@ handle_info(_Info, State) ->
 %% Description: Shutdown the server
 %% Returns: any (ignored by gen_server)
 %% --------------------------------------------------------------------
-terminate(_Reason, _State) ->
+terminate(_Reason, State) ->
+ 	%[gen_tcp:close(X) || X <- State#states.sockets],
     ok.
 
 %% --------------------------------------------------------------------
