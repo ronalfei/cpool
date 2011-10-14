@@ -150,6 +150,20 @@ handle_cast(_Msg, State) ->
 %%          {stop, Reason, State}            (terminate/2 is called)
 %% --------------------------------------------------------------------
 
+handle_info({tcp_closed, Sock}, State) ->
+    ?dbg2("Closing connection ~p  due to server termination", [Sock]),
+	Sockets  = State#states.sockets,
+	NewSocks = lists:delete(Sock, Sockets),
+    Numbers  = State#states.numbers,
+	{noreply, #states{ sockets=NewSocks, numbers=Numbers-1 }};
+
+handle_info({tcp_error, Error, Sock}, State) ->
+    ?dbg2("Closing connection ~p due to network error: ~p", [Sock, Error]),
+	Sockets  = State#states.sockets,
+	NewSocks = lists:delete(Sock, Sockets),
+    Numbers  = State#states.numbers,
+	{noreply, #states{ sockets=NewSocks, numbers=Numbers-1 }};
+
 handle_info(_Info, State) ->
     {noreply, State}.
 
@@ -158,7 +172,7 @@ handle_info(_Info, State) ->
 %% Description: Shutdown the server
 %% Returns: any (ignored by gen_server)
 %% --------------------------------------------------------------------
-terminate(_Reason, State) ->
+terminate(_Reason, _State) ->
  	%[gen_tcp:close(X) || X <- State#states.sockets],
     ok.
 
