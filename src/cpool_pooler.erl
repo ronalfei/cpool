@@ -196,6 +196,7 @@ connect(Socket_lists, Pool_numbers) ->
 	Config = get_connect_config(),
     case cpool_connect:connect(Config) of
         {ok,Socket} ->
+			%erlang:monitor(process, Socket),
             connect([Socket|Socket_lists], Pool_numbers-1);
         {error, Reason} ->
             ?dbg2("Connect Error: ~p, Pool_number: ~p ", [Reason, Pool_numbers]),

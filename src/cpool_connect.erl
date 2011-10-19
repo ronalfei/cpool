@@ -42,7 +42,7 @@
 connect(Config) ->
 	[{host,Host},{port,Port},{timeout,Timeout}] = Config,
 	%?dbg2("Connecting... Host: ~p,Port : ~p ",[Host,Port]),
-	gen_tcp:connect(Host,Port,[binary,{packet,0},{active,false}],Timeout). 
+	gen_tcp:connect(Host,Port,[binary,{packet,0},{active, once}],Timeout). 
 
 
 raw(Socket,RawData) ->
@@ -52,7 +52,14 @@ raw(Socket,RawData) ->
 			<<"CLIENT_ERROR <Get socket from pool failed>\r\n">>;
 		_ ->
 			gen_tcp:send(Socket,RawData),
-		    gen_tcp:recv(Socket,0)
+			receive
+        		{tcp,Socket,Data} ->
+					inet:setopts(Socket,[{active,once}]),
+					?dbg2("data: ~p", [Data]),
+					Data;
+        		{tcp_closed,Socket} ->
+					?dbg2("reveive Socket: ~p closed", [Socket])
+    		end
 	end.
 
 %-----------for memcache client------------------

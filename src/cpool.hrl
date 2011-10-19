@@ -10,6 +10,7 @@
 
 -define(TARGET_HOST,"127.0.0.1").
 -define(TARGET_PORT,11211).
+%-define(TARGET_PORT,6379).
 
 -define(POOLS,5).   % how many pools will you start
 -define(POOL_PREFIX,"pooler_").
