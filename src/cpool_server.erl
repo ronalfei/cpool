@@ -95,10 +95,6 @@ handle_cast(_Msg, State) ->
 %%          {noreply, State, Timeout} |
 %%          {stop, Reason, State}            (terminate/2 is called)
 %% --------------------------------------------------------------------
-handle_info(tick, State) ->
-    io:format("~p ticking \n", [?MODULE]),
-    {noreply, State};
-
 
 handle_info(_Info, State) ->
     {noreply, State}.

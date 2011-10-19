@@ -167,6 +167,7 @@ handle_info({tcp_error, Error, Sock}, State) ->
 	Sockets  = State#states.sockets,
 	NewSocks = lists:delete(Sock, Sockets),
     Numbers  = State#states.numbers,
+	self() ! reconnect,
 	{noreply, #states{ sockets=NewSocks, numbers=Numbers-1 }};
 
 handle_info(reconnect, State) ->
@@ -211,10 +212,10 @@ connect(Socket_lists, Pool_numbers) ->
             connect([Socket|Socket_lists], Pool_numbers-1);
         {error, Reason} ->
             ?dbg2("Connect Error: ~p, Pool_number: ~p ", [Reason, Pool_numbers]),
-			receive 
-			after 2000 ->
-            	connect(Socket_lists, Pool_numbers)
-			end
+			receive
+            after 2000 ->
+            	connect([Socket_lists], Pool_numbers-1)
+            end
     end.
 
 reconnect() ->
