@@ -81,7 +81,7 @@ handle_call(get_socket, _From, State) ->
 
 	if
 		Numbers == 0 ->
-			case cpool_connect:connect(get_connect_config()) of
+			case cpool_connect:connect(get_connect_config(), false) of
 				{ok, LastSocket} ->
 					?dbg2("Dynamic Create Pool Socket Ok : ~p ", [LastSocket]),
 					{reply, LastSocket, #states{sockets=[], numbers=0}};
@@ -91,6 +91,7 @@ handle_call(get_socket, _From, State) ->
 			end;
 		Numbers == 1 ->
 			[HSocket|_] = Sockets,
+			inet:setopts(HSocket, [{active, false}]),
 			case cpool_connect:connect(get_connect_config()) of
 				{ok, SecondSocket} ->
 					?dbg2("Dynamic Create Pool Socket Ok : ~p ", [SecondSocket]),
@@ -104,9 +105,11 @@ handle_call(get_socket, _From, State) ->
 			%%send a close signal to  memcache Server is necessary
 			gen_tcp:close(HSocket2),
 			?dbg2("close Socket: ~p",[HSocket2]),
+			inet:setopts(HSocket1, [{active, false}]),
 			{reply, HSocket1, #states{sockets=TSocket, numbers=Numbers-2}};
 		true -> 
 			[HSocket | TSocket] = Sockets,
+			inet:setopts(HSocket, [{active, false}]),
 			{reply, HSocket, #states{sockets=TSocket, numbers=Numbers-1}}
 	end;
 
@@ -136,6 +139,7 @@ handle_cast({free_socket, Socket}, State) ->
 		{error,_} ->
 			{noreply, #states{ sockets=Sockets, numbers=Numbers } };
 		_ ->
+			inet:setopts(Socket, [{active, once}]),
 			{noreply, #states{ sockets=[Socket|Sockets], numbers=Numbers+1 }} 
 	end;
 
@@ -155,6 +159,7 @@ handle_info({tcp_closed, Sock}, State) ->
 	Sockets  = State#states.sockets,
 	NewSocks = lists:delete(Sock, Sockets),
     Numbers  = State#states.numbers,
+	self() ! reconnect,
 	{noreply, #states{ sockets=NewSocks, numbers=Numbers-1 }};
 
 handle_info({tcp_error, Error, Sock}, State) ->
@@ -163,6 +168,13 @@ handle_info({tcp_error, Error, Sock}, State) ->
 	NewSocks = lists:delete(Sock, Sockets),
     Numbers  = State#states.numbers,
 	{noreply, #states{ sockets=NewSocks, numbers=Numbers-1 }};
+
+handle_info(reconnect, State) ->
+	?dbg1("reconnecting........"),
+    Sockets  = State#states.sockets,
+    Numbers  = State#states.numbers,
+    NewSocks = reconnect(),
+    {noreply, #states{ sockets=[NewSocks|Sockets], numbers=Numbers+1 }};
 
 handle_info(_Info, State) ->
     {noreply, State}.
@@ -196,11 +208,27 @@ connect(Socket_lists, Pool_numbers) ->
 	Config = get_connect_config(),
     case cpool_connect:connect(Config) of
         {ok,Socket} ->
-			%erlang:monitor(process, Socket),
             connect([Socket|Socket_lists], Pool_numbers-1);
         {error, Reason} ->
             ?dbg2("Connect Error: ~p, Pool_number: ~p ", [Reason, Pool_numbers]),
-            connect(Socket_lists, Pool_numbers)
+			receive 
+			after 2000 ->
+            	connect(Socket_lists, Pool_numbers)
+			end
+    end.
+
+reconnect() ->
+	Config = get_connect_config(),
+	case cpool_connect:connect(Config) of
+        {ok,Socket} ->
+			?dbg1("reconnecting ok .............."),
+			Socket;
+        {error, Reason} ->
+            ?dbg2("Connect Error: ~p ", [Reason]),
+			receive
+			after 2000 ->
+            	reconnect()
+			end
     end.
 
 get_connect_config() ->
