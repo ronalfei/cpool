@@ -14,7 +14,7 @@ Scene
 
 Getting Started
 1. 从github上下载cpool, 配置cpool.hrl.
-2. 通过start.sh启动cpool.
+2. 通过start.sh启动cpool.(推荐你在screen下运行start-dev.sh来进行调试)
 3. 修改php连接缓存的地址和端口为cpool的监听地址和端口.
 
 
