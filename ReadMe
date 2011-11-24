@@ -6,7 +6,8 @@ Goals
 目前也支持对redis的长连接.
 
 dependent
-需要php安装相应的memcache客户端或者redis客户端.
+PHP端需要安装相应的memcache客户端或者redis客户端.
+当然, 对于cpool, 需要安装erlang运行环境,并配置好环境变量.
 
 Scene
 通常多台php的webserver会跨ip连接一台memcached,由于某些原因会导致php和memcached的连接不能及时打开,
