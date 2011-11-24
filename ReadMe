@@ -1,4 +1,24 @@
-Cpool is a General connection pools for PHP.
+Cpool
+cpool是一个小巧, 通用和稳定的php缓存连接池.
+
+Goals
+主要用来解决php和memcached的长连接问题,已达到跟memcached连接的稳定性.
+目前也支持对redis的长连接.
+
+dependent
+需要php安装相应的memcache客户端或者redis客户端.
+
+Scene
+通常多台php的webserver会跨ip连接一台memcached,由于某些原因会导致php和memcached的连接不能及时打开,
+这时候通过php通过短连接去连接本地的cpool Server,而cpool去连接memcached, 从而解决对cache连接的不稳定性.
+
+Getting Started
+1. 从github上下载cpool, 配置cpool.hrl.
+2. 通过start.sh启动cpool.
+3. 修改php连接缓存的地址和端口为cpool的监听地址和端口.
+
+
+
+CPOOL
+Cpool is a small, general, stable  connection pools for PHP.
 You can use it for Redis pool or Memcache pool.
-
-

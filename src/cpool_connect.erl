@@ -57,57 +57,57 @@ raw(Socket,RawData) ->
 	end.
 
 %-----------for memcache client------------------
-get(Socket,Key) ->
-	gen_tcp:send(Socket,"get "++Key++"\r\n"),
-	case gen_tcp:recv(Socket,0) of
-		{ok,Packet} -> 
-			parse_get(Packet); 
-		{error,Reason} ->?dbg2("Get error : ~p ",[Reason])
-		end.
-set(Socket,Key,Value)->
-	set(Socket,Key,Value,0,0).
-
-set(Socket,Key,Value,Exptime)->
-	set(Socket,Key,Value,0,Exptime).
-
-set(Socket,Key,Value,Flags,Exptime) ->
-	Length		= string:len(Value),
-	Exptime1	= integer_to_list(Exptime),
-	Length1		= integer_to_list(Length),
-	Command		= "set "++Key++" "++integer_to_list(Flags)++" "++ Exptime1 ++" "++ Length1 ++" \r\n"++Value++"\r\n",
-	%?dbg2(" send chunk: ~p ~n",[Command]),
-	gen_tcp:send(Socket,Command),
-	case gen_tcp:recv(Socket,0) of
-		{ok,<<"STORED\r\n">>} -> success;
-		{ok,<<"NOT_STORED\r\n">>} -> failed,?dbg1("Not store");
-		{error,Reason} ->?dbg2("Set Value Error : ~p ",[Reason])
-	end.
-
-mget(Socket,Lkey) ->
-	L = [X++" "||X <- Lkey],
-	S = lists:concat(L),
-	gen_tcp:send(Socket,"get "++S++"\r\n"),
-	case gen_tcp:recv(Socket,0) of
-		{ok,Packet} -> parse_mget(Packet);
-		{error,Reason} ->?dbg2("mGet Value error : ~p ",[Reason])
-    end.
-
-
-close(Socket) ->
-	gen_tcp:close(Socket).
-
-parse_get(Packet) ->
-	case string:tokens(binary_to_list(Packet),"\r\n")  of
-		[_,Result,_] -> Result;
-		[_] -> null
-	end.
-parse_mget(Packet) ->
-	L = string:tokens(binary_to_list(Packet),"\r\n"),
-	parse_mlist(L).
-
-parse_mlist(["END"])->[];
-parse_mlist( [H1, H2 |Tail] ) ->
-	K = lists:nth(2, string:tokens(H1," ") ),
-	V = H2,
-	[ {K, V} | parse_mlist(Tail)].
-
+%get(Socket,Key) ->
+%	gen_tcp:send(Socket,"get "++Key++"\r\n"),
+%	case gen_tcp:recv(Socket,0) of
+%		{ok,Packet} -> 
+%			parse_get(Packet); 
+%		{error,Reason} ->?dbg2("Get error : ~p ",[Reason])
+%		end.
+%set(Socket,Key,Value)->
+%	set(Socket,Key,Value,0,0).
+%
+%set(Socket,Key,Value,Exptime)->
+%	set(Socket,Key,Value,0,Exptime).
+%
+%set(Socket,Key,Value,Flags,Exptime) ->
+%	Length		= string:len(Value),
+%	Exptime1	= integer_to_list(Exptime),
+%	Length1		= integer_to_list(Length),
+%	Command		= "set "++Key++" "++integer_to_list(Flags)++" "++ Exptime1 ++" "++ Length1 ++" \r\n"++Value++"\r\n",
+%	%?dbg2(" send chunk: ~p ~n",[Command]),
+%	gen_tcp:send(Socket,Command),
+%	case gen_tcp:recv(Socket,0) of
+%		{ok,<<"STORED\r\n">>} -> success;
+%		{ok,<<"NOT_STORED\r\n">>} -> failed,?dbg1("Not store");
+%		{error,Reason} ->?dbg2("Set Value Error : ~p ",[Reason])
+%	end.
+%
+%mget(Socket,Lkey) ->
+%	L = [X++" "||X <- Lkey],
+%	S = lists:concat(L),
+%	gen_tcp:send(Socket,"get "++S++"\r\n"),
+%	case gen_tcp:recv(Socket,0) of
+%		{ok,Packet} -> parse_mget(Packet);
+%		{error,Reason} ->?dbg2("mGet Value error : ~p ",[Reason])
+%    end.
+%
+%
+%close(Socket) ->
+%	gen_tcp:close(Socket).
+%
+%parse_get(Packet) ->
+%	case string:tokens(binary_to_list(Packet),"\r\n")  of
+%		[_,Result,_] -> Result;
+%		[_] -> null
+%	end.
+%parse_mget(Packet) ->
+%	L = string:tokens(binary_to_list(Packet),"\r\n"),
+%	parse_mlist(L).
+%
+%parse_mlist(["END"])->[];
+%parse_mlist( [H1, H2 |Tail] ) ->
+%	K = lists:nth(2, string:tokens(H1," ") ),
+%	V = H2,
+%	[ {K, V} | parse_mlist(Tail)].
+%

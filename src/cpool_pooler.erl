@@ -11,6 +11,7 @@
 %% Include files
 %% --------------------------------------------------------------------
 -include("cpool.hrl").
+
 %% --------------------------------------------------------------------
 %% External exports
 %-export([start/0, start_link/0, stop/0, get_socket/0, free_socket/1, status/0]).
