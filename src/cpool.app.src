@@ -1,9 +1,18 @@
-%% -*- erlang -*-
-{application, cpool,
- [{description, "cpool"},
-  {vsn, "0.1"},
-  {modules, []},
-  {registered, []},
-  {mod, {'cpool_app', []}},
-  {env, []},
-  {applications, [kernel, stdlib, crypto]}]}.
+%% Feel free to use, reuse and abuse the code in this file.
+
+{application, cpool, [
+	{description, "cpool v2.0."},
+	{vsn, "2.0"},
+	{modules, []},
+	{registered, [cpool_sup]},
+	{applications, [
+		kernel,
+		stdlib,
+		crypto,
+		public_key,
+		ssl,
+		cowboy
+	]},
+	{mod, {cpool, []}},
+	{env, []}
+]}.

@@ -1,26 +1,15 @@
+# Feel free to use, reuse and abuse the code in this file.
 
-PREFIX:=../
-DEST:=$(PREFIX)$(PROJECT)
+all: app
 
-REBAR=./rebar
+app: get-deps
+	@./rebar compile
 
-all:
-	@$(REBAR) get-deps compile
-
-edoc:
-	@$(REBAR) doc
-
-test:
-	@rm -rf .eunit
-	@mkdir -p .eunit
-	@$(REBAR) skip_deps=true eunit
+get-deps:
+	@./rebar get-deps
 
 clean:
-	@$(REBAR) clean
+	@./rebar clean
+	rm -f erl_crash.dump
 
-build_plt:
-	@$(REBAR) build-plt
-
-dialyzer:
-	@$(REBAR) dialyze
-
+dist-clean: clean
