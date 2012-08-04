@@ -4,6 +4,6 @@
 
 exec erl -pa ebin \
 	-sname cpool_dev \
-    -boot start_sasl \
+   	-boot start_sasl \
 	-s cpool \
 	-s reloader

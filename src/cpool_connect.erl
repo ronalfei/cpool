@@ -44,7 +44,7 @@ connect(Config) ->
 
 connect(Config, Opt) -> 
 	[{host,Host},{port,Port},{timeout,Timeout}] = Config,
-	gen_tcp:connect(Host,Port,[binary,{packet,0},{active, Opt}],Timeout).
+	gen_tcp:connect(Host,Port,[binary,{packet,0},{active, Opt}, {send_timeout, 5000}],Timeout).
 
 raw(Socket,RawData) ->
 	case Socket of 
