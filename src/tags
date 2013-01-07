@@ -1,0 +1,89 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+DEBUG	cpool.hrl	/^-define(DEBUG, true).$/;"	d
+LISTEN_PORT	cpool.hrl	/^-define(LISTEN_PORT,11111).$/;"	d
+MAX_POOL_NUMBERS	cpool.hrl	/^-define(MAX_POOL_NUMBERS,20).  % max links for per pool$/;"	d
+MIN_POOL_NUMBERS	cpool.hrl	/^-define(MIN_POOL_NUMBERS,2).  % min links for per pool$/;"	d
+POOLS	cpool.hrl	/^-define(POOLS,5).   % how many pools will you start$/;"	d
+POOL_PREFIX	cpool.hrl	/^-define(POOL_PREFIX,"pooler_").$/;"	d
+SERVERS	cpool.hrl	/^-define(SERVERS,5). % how many process to listen Port$/;"	d
+TARGET_HOST	cpool.hrl	/^-define(TARGET_HOST,"127.0.0.1").$/;"	d
+TARGET_PORT	cpool.hrl	/^-define(TARGET_PORT,11311).$/;"	d
+all_changed	reloader.erl	/^all_changed() ->$/;"	f	module:reloader
+code_change	cpool_pooler.erl	/^code_change(_OldVsn, State, _Extra) ->$/;"	f	module:cpool_pooler
+code_change	reloader.erl	/^code_change(_Vsn, State, _Extra) ->$/;"	f	module:reloader
+connect	cpool_connect.erl	/^connect(Config) ->$/;"	f	module:cpool_connect
+connect	cpool_connect.erl	/^connect(Config, Opt) -> $/;"	f	module:cpool_connect
+connect	cpool_pooler.erl	/^connect(Socket_lists, 0) ->$/;"	f	module:cpool_pooler
+connect	cpool_pooler.erl	/^connect(Socket_lists, Pool_numbers) ->$/;"	f	module:cpool_pooler
+cpool	cpool.erl	/^-module(cpool).$/;"	m
+cpool_app	cpool_app.erl	/^-module(cpool_app).$/;"	m
+cpool_connect	cpool_connect.erl	/^-module(cpool_connect).$/;"	m
+cpool_pooler	cpool_pooler.erl	/^-module(cpool_pooler).$/;"	m
+cpool_sup	cpool_sup.erl	/^-module(cpool_sup).$/;"	m
+dbg1	cpool.hrl	/^-define(dbg1(Data), io:format("*dbg ~p:~p: ~p ~n", [?MODULE, ?LINE, Data])).$/;"	d
+dbg1	cpool.hrl	/^-define(dbg1(Data),"").$/;"	d
+dbg2	cpool.hrl	/^-define(dbg2(Fmt,Data), io:format("*dbg ~p:~p: "++Fmt++"~n ", [?MODULE, ?LINE | Data])).$/;"	d
+dbg2	cpool.hrl	/^-define(dbg2(Fmt,Data),"").$/;"	d
+doit	reloader.erl	/^doit(From, To) ->$/;"	f	module:reloader
+free_socket	cpool_pooler.erl	/^free_socket(PoolName,Socket) ->$/;"	f	module:cpool_pooler
+get_connect_config	cpool_pooler.erl	/^get_connect_config() ->$/;"	f	module:cpool_pooler
+get_pools	cpool_sup.erl	/^get_pools(0, Pools) ->$/;"	f	module:cpool_sup
+get_pools	cpool_sup.erl	/^get_pools(N,Pools) -> $/;"	f	module:cpool_sup
+get_rand_pool_name	server_protocol.erl	/^get_rand_pool_name() ->$/;"	f	module:server_protocol
+get_socket	cpool_pooler.erl	/^get_socket(PoolName) ->$/;"	f	module:cpool_pooler
+handle_call	cpool_pooler.erl	/^handle_call(_Request, _From, State) ->$/;"	f	module:cpool_pooler
+handle_call	cpool_pooler.erl	/^handle_call(get_socket, _From, State) ->$/;"	f	module:cpool_pooler
+handle_call	cpool_pooler.erl	/^handle_call(status, _From, State) ->$/;"	f	module:cpool_pooler
+handle_call	cpool_pooler.erl	/^handle_call(stop,_From, State) ->$/;"	f	module:cpool_pooler
+handle_call	reloader.erl	/^handle_call(_Req, _From, State) ->$/;"	f	module:reloader
+handle_call	reloader.erl	/^handle_call(stop, _From, State) ->$/;"	f	module:reloader
+handle_cast	cpool_pooler.erl	/^handle_cast(_Msg, State) ->$/;"	f	module:cpool_pooler
+handle_cast	cpool_pooler.erl	/^handle_cast({free_socket, Socket}, State) ->$/;"	f	module:cpool_pooler
+handle_cast	reloader.erl	/^handle_cast(_Req, State) ->$/;"	f	module:reloader
+handle_info	cpool_pooler.erl	/^handle_info(_Info, State) ->$/;"	f	module:cpool_pooler
+handle_info	cpool_pooler.erl	/^handle_info(reconnect, State) ->$/;"	f	module:cpool_pooler
+handle_info	cpool_pooler.erl	/^handle_info({tcp_closed, Sock}, State) ->$/;"	f	module:cpool_pooler
+handle_info	cpool_pooler.erl	/^handle_info({tcp_error, Error, Sock}, State) ->$/;"	f	module:cpool_pooler
+handle_info	reloader.erl	/^handle_info(_Info, State) ->$/;"	f	module:reloader
+handle_info	reloader.erl	/^handle_info(doit, State) ->$/;"	f	module:reloader
+init	cpool_pooler.erl	/^init([]) ->$/;"	f	module:cpool_pooler
+init	cpool_sup.erl	/^init([]) ->$/;"	f	module:cpool_sup
+init	reloader.erl	/^init([]) ->$/;"	f	module:reloader
+init	server_protocol.erl	/^init(ListenerPid, Socket, Transport, _Opts = []) ->$/;"	f	module:server_protocol
+is_changed	reloader.erl	/^is_changed(M) ->$/;"	f	module:reloader
+loop	server_protocol.erl	/^loop(Socket, Transport) ->$/;"	f	module:server_protocol
+loop1	server_protocol.erl	/^loop1(Socket, Transport, PoolName, PoolSocket) ->$/;"	f	module:server_protocol
+memcached_respon	cpool_connect.erl	/^memcached_respon(Bin, Socket, AllBin) ->$/;"	f	module:cpool_connect
+module_vsn	reloader.erl	/^module_vsn(L) when is_list(L) ->$/;"	f	module:reloader
+module_vsn	reloader.erl	/^module_vsn({M, Beam, _Fn}) ->$/;"	f	module:reloader
+raw	cpool_connect.erl	/^raw(Socket,RawData) ->$/;"	f	module:cpool_connect
+reconnect	cpool_pooler.erl	/^reconnect() ->$/;"	f	module:cpool_pooler
+reload	reloader.erl	/^reload(Module) ->$/;"	f	module:reloader
+reload_modules	reloader.erl	/^reload_modules(Modules) ->$/;"	f	module:reloader
+reloader	reloader.erl	/^-module(reloader).$/;"	m
+server_protocol	server_protocol.erl	/^-module(server_protocol).$/;"	m
+stamp	reloader.erl	/^stamp() ->$/;"	f	module:reloader
+start	cpool.erl	/^start() ->$/;"	f	module:cpool
+start	cpool_app.erl	/^start(_StartType, _StartArgs) ->$/;"	f	module:cpool_app
+start	cpool_pooler.erl	/^start(PoolName) ->       $/;"	f	module:cpool_pooler
+start	cpool_sup.erl	/^start() ->$/;"	f	module:cpool_sup
+start	reloader.erl	/^start() ->$/;"	f	module:reloader
+start_link	cpool_pooler.erl	/^start_link(PoolName) ->$/;"	f	module:cpool_pooler
+start_link	cpool_sup.erl	/^start_link() ->$/;"	f	module:cpool_sup
+start_link	reloader.erl	/^start_link() ->$/;"	f	module:reloader
+start_link	server_protocol.erl	/^start_link(ListenerPid, Socket, Transport, Opts) ->$/;"	f	module:server_protocol
+state	reloader.erl	/^-record(state, {last, tref}).$/;"	r
+states	cpool_pooler.erl	/^-record(states, {sockets, numbers}).$/;"	r
+status	cpool.erl	/^status() ->$/;"	f	module:cpool
+status	cpool_pooler.erl	/^status(PoolName) -> $/;"	f	module:cpool_pooler
+stop	cpool_app.erl	/^stop(_State) ->$/;"	f	module:cpool_app
+stop	cpool_pooler.erl	/^stop(PoolName) ->$/;"	f	module:cpool_pooler
+stop	reloader.erl	/^stop() ->$/;"	f	module:reloader
+terminate	cpool_pooler.erl	/^terminate(_Reason, _State) ->$/;"	f	module:cpool_pooler
+terminate	reloader.erl	/^terminate(_Reason, State) ->$/;"	f	module:reloader
+test	cpool.erl	/^test() ->$/;"	f	module:cpool

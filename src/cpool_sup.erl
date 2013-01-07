@@ -6,12 +6,11 @@
 %%% -------------------------------------------------------------------
 -module(cpool_sup).
 -author("BlackAnimal <ronalfei@gmail.com> or <ronalfei@qq.com>").
-
 -behaviour(supervisor).
-
 -include("cpool.hrl").
+
 %% External exports
--export([start_link/0, start/0]).
+-export([start_link/0]).
 
 %% supervisor callbacks
 -export([init/1]).
@@ -21,18 +20,12 @@
 start_link() ->
     supervisor:start_link({local, ?MODULE}, ?MODULE, []).
 
-start() ->
-	start_link().
-	
+
 %% @spec init([]) -> SupervisorTree
 %% @doc supervisor callback.
 init([]) ->
 	
-	Server = {cpool_server,
-        {cpool_server, start_link, []},
-        permanent, 5000, worker, dynamic},
-
-	Pools = get_pools(?POOLS, [Server]),
+	Pools = get_pools(?POOLS, []),
 	
 	?dbg2("Pools : ~p",[Pools]),
 

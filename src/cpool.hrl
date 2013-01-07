@@ -19,7 +19,7 @@
 
 %%------memcache or redis address and port ------
 -define(TARGET_HOST,"127.0.0.1").
--define(TARGET_PORT,11211).
+-define(TARGET_PORT,11311).
 %-define(TARGET_PORT,6379).
 %%-----------------------------------------------
 

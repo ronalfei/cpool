@@ -5,6 +5,7 @@
 
 start() ->
 	application:start(crypto),
+	application:start(ranch),
 	application:start(cpool).
 status() ->
 	[ {pooler, X, cpool_pooler:status(list_to_existing_atom(?POOL_PREFIX ++ integer_to_list(X)))} || X <- lists:seq(1, ?POOLS) ].

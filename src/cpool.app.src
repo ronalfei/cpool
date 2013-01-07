@@ -3,7 +3,7 @@
  [{description, "cpool"},
   {vsn, "0.1"},
   {modules, []},
-  {registered, []},
+  {registered, [cpool_sup]},
   {mod, {'cpool_app', []}},
   {env, []},
-  {applications, [kernel, stdlib, crypto]}]}.
+  {applications, [kernel, stdlib, crypto, ranch ]}]}.
