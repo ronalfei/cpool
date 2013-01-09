@@ -18,7 +18,10 @@ loop(Socket, Transport) ->
 			PoolName = get_rand_pool_name(),
 			PoolSocket = cpool_pooler:get_socket(PoolName),
 			Respond = case cpool_connect:raw(PoolSocket, Data) of
-				{error, closed} -> gen_tcp:close(PoolSocket), <<"Pool connection closed\r\n">> ; %close it,if the PoolSocket is not alived;
+				{error, _} ->
+					%close it,if the PoolSocket is not alived;
+					gen_tcp:close(PoolSocket), 
+					<<"CLIENT_ERROR\r\n">> ; 
 				{_Any, Ret} -> 
 					%?dbg2("what is any: ~p", [_Any]),
 					Ret 
@@ -52,7 +55,7 @@ loop1(Socket, Transport, PoolName, PoolSocket) ->
 
 %-------------internal function -------------------
 get_rand_pool_name() ->
-	{_, _, S} = time(),
+	{_, _, S} = now(),
 	S1 = (S rem ?POOLS )+1,
 	%?dbg2("S1 = ~p ~n", [S1]),
 	S2 = ?POOL_PREFIX ++ integer_to_list(S1),

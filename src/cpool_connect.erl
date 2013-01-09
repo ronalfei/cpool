@@ -50,7 +50,7 @@ raw(Socket,RawData) ->
 	case Socket of 
 		{error,EReason} ->
 			?dbg2("Get socket from pool failed: ~p",[EReason]),
-			{ok, <<"CLIENT_ERROR\r\n">>};
+			{error, <<"CLIENT_ERROR\r\n">>};
 		_ ->
             gen_tcp:send(Socket, RawData),
             {ok, Bin} = gen_tcp:recv(Socket, 0),
