@@ -19,7 +19,7 @@
 %% ===================================================================
 
 start(_StartType, _StartArgs) ->
-	{ok, _} = ranch:start_listener(cpool_server, 4,
+	{ok, _} = ranch:start_listener(cpool_server, 16,
 			ranch_tcp, [{port, ?LISTEN_PORT}], server_protocol, []),
     cpool_sup:start_link().
 

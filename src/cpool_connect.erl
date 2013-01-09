@@ -50,28 +50,28 @@ raw(Socket,RawData) ->
 	case Socket of 
 		{error,EReason} ->
 			?dbg2("Get socket from pool failed: ~p",[EReason]),
-			<<"CLIENT_ERROR <Get socket from pool failed>\r\n">>;
+			{ok, <<"CLIENT_ERROR\r\n">>};
 		_ ->
             gen_tcp:send(Socket, RawData),
             {ok, Bin} = gen_tcp:recv(Socket, 0),
-			?dbg2("first bin is :~s", [Bin]),
+			%?dbg2("first bin is :~s", [Bin]),
 			Respon = memcached_respon(Bin, Socket, <<>>),
 			{ok, Respon}
 	end.
 
 
 memcached_respon(Bin, Socket, AllBin) ->
-	case binary:part(Bin, {byte_size(Bin), -5}) of
-		<<"END\r\n">> -> <<AllBin/binary, Bin/binary>>;
-		<<"ROR\r\n">> -> <<AllBin/binary, Bin/binary>>; %means ERROR
-		<<"UND\r\n">> -> <<AllBin/binary, Bin/binary>>; %means ERROR
-		<<"RED\r\n">> -> <<AllBin/binary, Bin/binary>>; %means ERROR
-		<<"IST\r\n">> -> <<AllBin/binary, Bin/binary>>; %means ERROR
-		<<"TED\r\n">> -> <<AllBin/binary, Bin/binary>>; %means ERROR
-		%<<"\r\n">> -> <<AllBin/binary, Bin/binary>>; %means ERROR
+	case binary:part(Bin, {byte_size(Bin), -2}) of
+		%<<"END\r\n">> -> <<AllBin/binary, Bin/binary>>;
+		%<<"ROR\r\n">> -> <<AllBin/binary, Bin/binary>>; %means ERROR
+		%<<"UND\r\n">> -> <<AllBin/binary, Bin/binary>>; %means ERROR
+		%<<"RED\r\n">> -> <<AllBin/binary, Bin/binary>>; %means ERROR
+		%<<"IST\r\n">> -> <<AllBin/binary, Bin/binary>>; %means ERROR
+		%<<"TED\r\n">> -> <<AllBin/binary, Bin/binary>>; %means ERROR
+		<<"\r\n">> -> <<AllBin/binary, Bin/binary>>; %means ERROR
 		_Any -> 
 			{ok, NewBin} = gen_tcp:recv(Socket, 0),
-			?dbg2("New bin is :~s", [Bin]),
+			%?dbg2("New bin is :~s", [Bin]),
 			memcached_respon(NewBin, Socket, <<AllBin/binary, Bin/binary>>)
 	end.
 		

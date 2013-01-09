@@ -14,7 +14,7 @@
 
 %%---accepter  config------------
 -define(LISTEN_PORT,11111).
--define(SERVERS,5). % how many process to listen Port
+-define(SERVERS, 16). % how many process to listen Port
 %%-------------------------------------------
 
 %%------memcache or redis address and port ------
@@ -25,8 +25,8 @@
 
 
 %%---mpm config like apache------------------------
--define(POOLS,5).   % how many pools will you start
+-define(POOLS, 16).   % how many pools will you start
 -define(POOL_PREFIX,"pooler_").
--define(MIN_POOL_NUMBERS,2).  % min links for per pool
+-define(MIN_POOL_NUMBERS,5).  % min links for per pool
 -define(MAX_POOL_NUMBERS,20).  % max links for per pool
 %%----------------------------------------------------

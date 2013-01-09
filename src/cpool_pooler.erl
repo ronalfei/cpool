@@ -19,7 +19,10 @@
 %% gen_server callbacks
 -export([init/1, handle_call/3, handle_cast/2, handle_info/2, terminate/2, code_change/3]).
 
+-define(INTERVAL_TIME, 9000).
+
 -record(states, {sockets, numbers}).
+
 
 %% ====================================================================
 %% External functions
@@ -34,11 +37,11 @@ stop(PoolName) ->
     gen_server:call(PoolName, stop).
 
 get_socket(PoolName) ->
-	?dbg2("Get Socket PoolName : ~p ~n",[PoolName]),
+	%?dbg2("Get Socket PoolName : ~p ~n",[PoolName]),
 	gen_server:call(PoolName, get_socket).
 
 free_socket(PoolName,Socket) ->
-	?dbg2("Free Socket PoolName : ~p ~n",[PoolName]),
+	%?dbg2("Free Socket PoolName : ~p ~n",[PoolName]),
 	gen_server:cast(PoolName, {free_socket, Socket}).
 
 status(PoolName) -> 
@@ -60,6 +63,7 @@ init([]) ->
 	Sockets = connect([], Numbers),
 	?dbg2("Creating pool ~p Ok ", [Numbers]),
 	%?dbg2("create pool OK,numbers: ~p ,Sockets : ~p ",[Numbers,Sockets]),
+	timer:send_interval(?INTERVAL_TIME, self(), check_connect),
 
     {ok, #states{sockets=Sockets, numbers=Numbers}}.
 
@@ -101,13 +105,6 @@ handle_call(get_socket, _From, State) ->
 					?dbg2("Dynamic Create Pool Socket Error : ~p ", [SecondReason]),
                     {reply, HSocket, #states{sockets=[], numbers=0}}
 			end;
-		Numbers >= ?MAX_POOL_NUMBERS ->
-			[HSocket1, HSocket2|TSocket] = Sockets,
-			%%send a close signal to  memcache Server is necessary
-			gen_tcp:close(HSocket2),
-			?dbg2("close Socket: ~p",[HSocket2]),
-			inet:setopts(HSocket1, [{active, false}]),
-			{reply, HSocket1, #states{sockets=TSocket, numbers=Numbers-2}};
 		true -> 
 			[HSocket | TSocket] = Sockets,
 			inet:setopts(HSocket, [{active, false}]),
@@ -135,7 +132,7 @@ handle_call(_Request, _From, State) ->
 handle_cast({free_socket, Socket}, State) ->
 	Sockets = State#states.sockets,
 	Numbers = State#states.numbers,
-	?dbg2("Free Socket:~p ", [Socket]),
+	%?dbg2("Free Socket:~p ", [Socket]),
 	case Socket of 
 		{error,_} ->
 			{noreply, #states{ sockets=Sockets, numbers=Numbers } };
@@ -177,6 +174,24 @@ handle_info(reconnect, State) ->
     Numbers  = State#states.numbers,
     NewSocks = reconnect(),
     {noreply, #states{ sockets=[NewSocks|Sockets], numbers=Numbers+1 }};
+
+
+handle_info(check_connect, State) ->
+	?dbg1("starting check connect"),
+    Sockets  = State#states.sockets,
+    Numbers  = State#states.numbers,
+	if 
+		Numbers >= ?MAX_POOL_NUMBERS ->
+			[HSocket | TSocket] = Sockets,
+			%%send a close signal to  memcache Server is necessary
+			gen_tcp:close(HSocket),
+			?dbg2("close Socket: ~p",[HSocket]),
+			?dbg1("done................."),
+    		{noreply, #states{ sockets=[TSocket], numbers=Numbers-1 }};
+		 true  ->
+			?dbg1("done................."),
+		 	{noreply, State}
+	end;
 
 handle_info(_Info, State) ->
     {noreply, State}.

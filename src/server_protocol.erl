@@ -13,13 +13,14 @@ init(ListenerPid, Socket, Transport, _Opts = []) ->
 loop(Socket, Transport) ->
 	case Transport:recv(Socket, 0, 5000) of
 		{ok, Bin} ->
+			%?dbg2("server received : ~p", [Bin]),
 			Data = get_all_socket_buffer(Transport, Socket, Bin, <<>>),
 			PoolName = get_rand_pool_name(),
 			PoolSocket = cpool_pooler:get_socket(PoolName),
 			Respond = case cpool_connect:raw(PoolSocket, Data) of
 				{error, closed} -> gen_tcp:close(PoolSocket), <<"Pool connection closed\r\n">> ; %close it,if the PoolSocket is not alived;
 				{_Any, Ret} -> 
-					?dbg2("what is any: ~p", [_Any]),
+					%?dbg2("what is any: ~p", [_Any]),
 					Ret 
 			end,
 
@@ -32,11 +33,12 @@ loop(Socket, Transport) ->
 loop1(Socket, Transport, PoolName, PoolSocket) ->
     case Transport:recv(Socket, 0, 5000) of
         {ok, Bin} ->
+			%?dbg2("server received1 : ~p", [Bin]),
 			Data = get_all_socket_buffer(Transport, Socket, Bin, <<>>),
             Respond = case cpool_connect:raw(PoolSocket,Data) of
                 {error, closed} -> gen_tcp:close(PoolSocket), <<"Pool connection closed\r\n">> ; %close it,if the PoolSocket is not alived;
                 {_Any, Ret} -> 
-                    ?dbg2("what is any: ~p", [_Any]),
+                    %?dbg2("what is any: ~p", [_Any]),
                     Ret 
             end,
             Transport:send(Socket, Respond),
@@ -52,10 +54,10 @@ loop1(Socket, Transport, PoolName, PoolSocket) ->
 get_rand_pool_name() ->
 	{_, _, S} = time(),
 	S1 = (S rem ?POOLS )+1,
-	?dbg2("S1 = ~p ~n", [S1]),
+	%?dbg2("S1 = ~p ~n", [S1]),
 	S2 = ?POOL_PREFIX ++ integer_to_list(S1),
 	S3 = list_to_existing_atom(S2),
-	?dbg2("S3 = ~p ~n", [S3]),
+	%?dbg2("S3 = ~p ~n", [S3]),
 	S3.
 
 get_all_socket_buffer(Transport, Socket, Bin, AllBin) ->
