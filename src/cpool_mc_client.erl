@@ -57,7 +57,7 @@ send(Socket,RawData) ->
 		_ ->
             gen_tcp:send(Socket, RawData),
             {ok, Bin} = gen_tcp:recv(Socket, 0),
-			%?dbg2("first bin is :~s", [Bin]),
+			?dbg2("first bin is :~p", [Bin]),
 			Respon = memcached_respon(Bin, Socket, <<>>),
 			{ok, Respon}
 	end.
@@ -74,7 +74,7 @@ memcached_respon(Bin, Socket, AllBin) ->
 		<<"\r\n">> -> <<AllBin/binary, Bin/binary>>; %means ERROR
 		_Any -> 
 			{ok, NewBin} = gen_tcp:recv(Socket, 0),
-			%?dbg2("New bin is :~s", [Bin]),
+			?dbg2("New bin is :~s", [Bin]),
 			memcached_respon(NewBin, Socket, <<AllBin/binary, Bin/binary>>)
 	end.
 		

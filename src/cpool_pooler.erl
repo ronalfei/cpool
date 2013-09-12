@@ -177,7 +177,7 @@ handle_info(reconnect, State) ->
 
 
 handle_info(check_connect, State) ->
-	?dbg1("starting check connect"),
+	%?dbg1("starting check connect"),
     Sockets  = State#states.sockets,
     Numbers  = State#states.numbers,
 	if 
@@ -189,7 +189,7 @@ handle_info(check_connect, State) ->
 			?dbg1("done................."),
     		{noreply, #states{ sockets=[TSocket], numbers=Numbers-1 }};
 		 true  ->
-			?dbg1("done................."),
+			%?dbg1("done................."),
 		 	{noreply, State}
 	end;
 

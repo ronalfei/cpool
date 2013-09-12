@@ -35,8 +35,12 @@ loop(Socket, Transport) ->
 
 loop1(Socket, Transport, PoolName, PoolSocket) ->
     case Transport:recv(Socket, 0, 5000) of
+        {ok, <<"quit\r\n">>} ->
+            cpool_pooler:free_socket(PoolName, PoolSocket),
+            ok = Transport:close(Socket);
+
         {ok, Bin} ->
-			%?dbg2("server received1 : ~p", [Bin]),
+			?dbg2("server received1 : ~p", [Bin]),
 			Data = get_all_socket_buffer(Transport, Socket, Bin, <<>>),
             Respond = case cpool_mc_client:send(PoolSocket,Data) of
                 {error, closed} -> gen_tcp:close(PoolSocket), <<"Pool connection closed\r\n">> ; %close it,if the PoolSocket is not alived;
