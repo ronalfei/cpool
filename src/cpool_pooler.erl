@@ -86,7 +86,7 @@ handle_call(get_socket, _From, State) ->
 
 	if
 		Numbers == 0 ->
-			case cpool_connect:connect(get_connect_config(), false) of
+			case cpool_mc_client:connect(get_connect_config(), false) of
 				{ok, LastSocket} ->
 					?dbg2("Dynamic Create Pool Socket Ok : ~p ", [LastSocket]),
 					{reply, LastSocket, #states{sockets=[], numbers=0}};
@@ -97,7 +97,7 @@ handle_call(get_socket, _From, State) ->
 		Numbers == 1 ->
 			[HSocket|_] = Sockets,
 			inet:setopts(HSocket, [{active, false}]),
-			case cpool_connect:connect(get_connect_config()) of
+			case cpool_mc_client:connect(get_connect_config()) of
 				{ok, SecondSocket} ->
 					?dbg2("Dynamic Create Pool Socket Ok : ~p ", [SecondSocket]),
 					{reply, HSocket, #states{sockets=[SecondSocket], numbers=1}};
@@ -223,7 +223,7 @@ connect(Socket_lists, 0) ->
 
 connect(Socket_lists, Pool_numbers) ->
 	Config = get_connect_config(),
-    case cpool_connect:connect(Config) of
+    case cpool_mc_client:connect(Config) of
         {ok,Socket} ->
             connect([Socket|Socket_lists], Pool_numbers-1);
         {error, Reason} ->
@@ -236,7 +236,7 @@ connect(Socket_lists, Pool_numbers) ->
 
 reconnect() ->
 	Config = get_connect_config(),
-	case cpool_connect:connect(Config) of
+	case cpool_mc_client:connect(Config) of
         {ok,Socket} ->
 			?dbg1("reconnecting ok .............."),
 			Socket;

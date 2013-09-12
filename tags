@@ -1,0 +1,279 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+DEBUG	./src/cpool.hrl	/^-define(DEBUG, true).$/;"	d
+DEST	./Makefile	/^DEST:=$(PREFIX)$(PROJECT)$/;"	m
+DIALYZER	./deps/ranch/Makefile	/^DIALYZER = dialyzer$/;"	m
+INTERVAL_TIME	./src/cpool_pooler.erl	/^-define(INTERVAL_TIME, 9000).$/;"	d
+LISTEN_PORT	./src/cpool.hrl	/^-define(LISTEN_PORT,11111).$/;"	d
+MAX_POOL_NUMBERS	./src/cpool.hrl	/^-define(MAX_POOL_NUMBERS,20).  % max links for per pool$/;"	d
+MIN_POOL_NUMBERS	./src/cpool.hrl	/^-define(MIN_POOL_NUMBERS,5).  % min links for per pool$/;"	d
+POOLS	./src/cpool.hrl	/^-define(POOLS, 16).   % how many pools will you start$/;"	d
+POOL_PREFIX	./src/cpool.hrl	/^-define(POOL_PREFIX,"pooler_").$/;"	d
+PREFIX	./Makefile	/^PREFIX:=..\/$/;"	m
+PROJECT	./deps/ranch/Makefile	/^PROJECT = ranch$/;"	m
+REBAR	./Makefile	/^REBAR=.\/rebar$/;"	m
+REBAR	./deps/ranch/Makefile	/^REBAR = rebar$/;"	m
+SERVERS	./src/cpool.hrl	/^-define(SERVERS, 16). % how many process to listen Port$/;"	d
+SUPERVISOR	./deps/ranch/src/ranch_sup.erl	/^-define(SUPERVISOR, ?MODULE).$/;"	d
+TAB	./deps/ranch/src/ranch_server.erl	/^-define(TAB, ?MODULE).$/;"	d
+TARGET_HOST	./src/cpool.hrl	/^-define(TARGET_HOST,"127.0.0.1").$/;"	d
+TARGET_PORT	./src/cpool.hrl	/^-define(TARGET_PORT,11311).$/;"	d
+accept	./deps/ranch/src/ranch_ssl.erl	/^accept(LSocket, Timeout) ->$/;"	f	module:ranch_ssl
+accept	./deps/ranch/src/ranch_tcp.erl	/^accept(LSocket, Timeout) ->$/;"	f	module:ranch_tcp
+accept_ack	./deps/ranch/src/ranch.erl	/^accept_ack(ListenerPid) ->$/;"	f	module:ranch
+acceptor_SUITE	./deps/ranch/test/acceptor_SUITE.erl	/^-module(acceptor_SUITE).$/;"	m
+active_echo_protocol	./deps/ranch/test/active_echo_protocol.erl	/^-module(active_echo_protocol).$/;"	m
+add_acceptor	./deps/ranch/src/ranch_server.erl	/^add_acceptor(Ref, Pid) ->$/;"	f	module:ranch_server
+add_connection	./deps/ranch/src/ranch_listener.erl	/^add_connection(ServerPid, ConnPid) ->$/;"	f	module:ranch_listener
+add_connection	./deps/ranch/src/ranch_server.erl	/^add_connection(ListenerPid) ->$/;"	f	module:ranch_server
+all	./deps/ranch/test/acceptor_SUITE.erl	/^all() ->$/;"	f	module:acceptor_SUITE
+all_changed	./src/reloader.erl	/^all_changed() ->$/;"	f	module:reloader
+async_accept	./deps/ranch/src/ranch_acceptor.erl	/^async_accept(LSocket, Transport) ->$/;"	f	module:ranch_acceptor
+child_spec	./deps/ranch/src/ranch.erl	/^child_spec(Ref, NbAcceptors, Transport, TransOpts, Protocol, ProtoOpts)$/;"	f	module:ranch
+clean_traces	./deps/ranch/test/acceptor_SUITE.erl	/^clean_traces() ->$/;"	f	module:acceptor_SUITE
+close	./deps/ranch/src/ranch_ssl.erl	/^close(Socket) ->$/;"	f	module:ranch_ssl
+close	./deps/ranch/src/ranch_tcp.erl	/^close(Socket) ->$/;"	f	module:ranch_tcp
+code_change	./deps/ranch/src/ranch_listener.erl	/^code_change(_OldVsn, State, _Extra) ->$/;"	f	module:ranch_listener
+code_change	./deps/ranch/src/ranch_server.erl	/^code_change(_OldVsn, State, _Extra) ->$/;"	f	module:ranch_server
+code_change	./src/cpool_pooler.erl	/^code_change(_OldVsn, State, _Extra) ->$/;"	f	module:cpool_pooler
+code_change	./src/reloader.erl	/^code_change(_Vsn, State, _Extra) ->$/;"	f	module:reloader
+connect	./deps/ranch/src/ranch_ssl.erl	/^connect(Host, Port, Opts) when is_integer(Port) ->$/;"	f	module:ranch_ssl
+connect	./deps/ranch/src/ranch_tcp.erl	/^connect(Host, Port, Opts) when is_integer(Port) ->$/;"	f	module:ranch_tcp
+connect	./src/cpool_mc_client.erl	/^connect(Config) ->$/;"	f	module:cpool_mc_client
+connect	./src/cpool_mc_client.erl	/^connect(Config, Opt) -> $/;"	f	module:cpool_mc_client
+connect	./src/cpool_pooler.erl	/^connect(Socket_lists, 0) ->$/;"	f	module:cpool_pooler
+connect	./src/cpool_pooler.erl	/^connect(Socket_lists, Pool_numbers) ->$/;"	f	module:cpool_pooler
+connect_loop	./deps/ranch/test/acceptor_SUITE.erl	/^connect_loop(Port, N, Sleep) ->$/;"	f	module:acceptor_SUITE
+connect_loop	./deps/ranch/test/acceptor_SUITE.erl	/^connect_loop(_, 0, _) ->$/;"	f	module:acceptor_SUITE
+consider_profiling	./deps/ranch/src/ranch_app.erl	/^consider_profiling() ->$/;"	f	module:ranch_app
+controlling_process	./deps/ranch/src/ranch_ssl.erl	/^controlling_process(Socket, Pid) ->$/;"	f	module:ranch_ssl
+controlling_process	./deps/ranch/src/ranch_tcp.erl	/^controlling_process(Socket, Pid) ->$/;"	f	module:ranch_tcp
+count_connections	./deps/ranch/src/ranch_server.erl	/^count_connections(ListenerPid) ->$/;"	f	module:ranch_server
+cpool	./src/cpool.erl	/^-module(cpool).$/;"	m
+cpool_app	./src/cpool_app.erl	/^-module(cpool_app).$/;"	m
+cpool_mc_client	./src/cpool_mc_client.erl	/^-module(cpool_mc_client).$/;"	m
+cpool_pooler	./src/cpool_pooler.erl	/^-module(cpool_pooler).$/;"	m
+cpool_sup	./src/cpool_sup.erl	/^-module(cpool_sup).$/;"	m
+dbg1	./src/cpool.hrl	/^-define(dbg1(Data), io:format("*dbg ~p:~p: ~p ~n", [?MODULE, ?LINE, Data])).$/;"	d
+dbg1	./src/cpool.hrl	/^-define(dbg1(Data),"").$/;"	d
+dbg2	./src/cpool.hrl	/^-define(dbg2(Fmt,Data), io:format("*dbg ~p:~p: "++Fmt++"~n ", [?MODULE, ?LINE | Data])).$/;"	d
+dbg2	./src/cpool.hrl	/^-define(dbg2(Fmt,Data),"").$/;"	d
+doit	./src/reloader.erl	/^doit(From, To) ->$/;"	f	module:reloader
+echo_protocol	./deps/ranch/examples/tcp_echo/src/echo_protocol.erl	/^-module(echo_protocol).$/;"	m
+echo_protocol	./deps/ranch/test/echo_protocol.erl	/^-module(echo_protocol).$/;"	m
+end_per_group	./deps/ranch/test/acceptor_SUITE.erl	/^end_per_group(_, _) ->$/;"	f	module:acceptor_SUITE
+end_per_group	./deps/ranch/test/acceptor_SUITE.erl	/^end_per_group(ssl, _) ->$/;"	f	module:acceptor_SUITE
+end_per_suite	./deps/ranch/test/acceptor_SUITE.erl	/^end_per_suite(_) ->$/;"	f	module:acceptor_SUITE
+fetch	./src/cpool_mc_client.erl	/^fetch(Socket,RawData) ->$/;"	f	module:cpool_mc_client
+filter_options	./deps/ranch/src/ranch.erl	/^filter_options([Opt = {Key, _}|Tail], AllowedKeys, Acc) ->$/;"	f	module:ranch
+filter_options	./deps/ranch/src/ranch.erl	/^filter_options([], _, Acc) ->$/;"	f	module:ranch
+free_socket	./src/cpool_pooler.erl	/^free_socket(PoolName,Socket) ->$/;"	f	module:cpool_pooler
+get_all_socket_buffer	./src/server_protocol.erl	/^get_all_socket_buffer(Transport, Socket, Bin, AllBin) ->$/;"	f	module:server_protocol
+get_connect_config	./src/cpool_pooler.erl	/^get_connect_config() ->$/;"	f	module:cpool_pooler
+get_max_connections	./deps/ranch/src/ranch.erl	/^get_max_connections(Ref) ->$/;"	f	module:ranch
+get_max_connections	./deps/ranch/src/ranch_listener.erl	/^get_max_connections(ServerPid) ->$/;"	f	module:ranch_listener
+get_pools	./src/cpool_sup.erl	/^get_pools(0, Pools) ->$/;"	f	module:cpool_sup
+get_pools	./src/cpool_sup.erl	/^get_pools(N,Pools) -> $/;"	f	module:cpool_sup
+get_port	./deps/ranch/src/ranch.erl	/^get_port(Ref) ->$/;"	f	module:ranch
+get_port	./deps/ranch/src/ranch_listener.erl	/^get_port(ServerPid) ->$/;"	f	module:ranch_listener
+get_protocol_options	./deps/ranch/src/ranch.erl	/^get_protocol_options(Ref) ->$/;"	f	module:ranch
+get_protocol_options	./deps/ranch/src/ranch_listener.erl	/^get_protocol_options(ServerPid) ->$/;"	f	module:ranch_listener
+get_rand_pool_name	./src/server_protocol.erl	/^get_rand_pool_name() ->$/;"	f	module:server_protocol
+get_socket	./src/cpool_pooler.erl	/^get_socket(PoolName) ->$/;"	f	module:cpool_pooler
+groups	./deps/ranch/test/acceptor_SUITE.erl	/^groups() ->$/;"	f	module:acceptor_SUITE
+handle_call	./deps/ranch/src/ranch_listener.erl	/^handle_call(_, _From, State) ->$/;"	f	module:ranch_listener
+handle_call	./deps/ranch/src/ranch_listener.erl	/^handle_call(get_max_connections, _From, State=#state{max_conns=MaxConns}) ->$/;"	f	module:ranch_listener
+handle_call	./deps/ranch/src/ranch_listener.erl	/^handle_call(get_port, _From, State=#state{port=Port}) ->$/;"	f	module:ranch_listener
+handle_call	./deps/ranch/src/ranch_listener.erl	/^handle_call(get_protocol_options, _From, State=#state{proto_opts=ProtoOpts}) ->$/;"	f	module:ranch_listener
+handle_call	./deps/ranch/src/ranch_listener.erl	/^handle_call(stop, _From, State) ->$/;"	f	module:ranch_listener
+handle_call	./deps/ranch/src/ranch_listener.erl	/^handle_call({set_max_connections, MaxConnections}, _From,$/;"	f	module:ranch_listener
+handle_call	./deps/ranch/src/ranch_listener.erl	/^handle_call({set_protocol_options, ProtoOpts}, _From, State=#state{ref=Ref}) ->$/;"	f	module:ranch_listener
+handle_call	./deps/ranch/src/ranch_server.erl	/^handle_call(_Request, _From, State) ->$/;"	f	module:ranch_server
+handle_call	./src/cpool_pooler.erl	/^handle_call(_Request, _From, State) ->$/;"	f	module:cpool_pooler
+handle_call	./src/cpool_pooler.erl	/^handle_call(get_socket, _From, State) ->$/;"	f	module:cpool_pooler
+handle_call	./src/cpool_pooler.erl	/^handle_call(status, _From, State) ->$/;"	f	module:cpool_pooler
+handle_call	./src/cpool_pooler.erl	/^handle_call(stop,_From, State) ->$/;"	f	module:cpool_pooler
+handle_call	./src/reloader.erl	/^handle_call(_Req, _From, State) ->$/;"	f	module:reloader
+handle_call	./src/reloader.erl	/^handle_call(stop, _From, State) ->$/;"	f	module:reloader
+handle_cast	./deps/ranch/src/ranch_listener.erl	/^handle_cast(_Msg, State) ->$/;"	f	module:ranch_listener
+handle_cast	./deps/ranch/src/ranch_listener.erl	/^handle_cast(remove_connection, State=#state{rm_diff=RmDiff}) ->$/;"	f	module:ranch_listener
+handle_cast	./deps/ranch/src/ranch_listener.erl	/^handle_cast({add_connection, ConnPid}, State) ->$/;"	f	module:ranch_listener
+handle_cast	./deps/ranch/src/ranch_listener.erl	/^handle_cast({set_port, Port}, State) ->$/;"	f	module:ranch_listener
+handle_cast	./deps/ranch/src/ranch_server.erl	/^handle_cast(_Request, State) ->$/;"	f	module:ranch_server
+handle_cast	./deps/ranch/src/ranch_server.erl	/^handle_cast({add_acceptor, Ref, Pid}, State=#state{monitors=Monitors}) ->$/;"	f	module:ranch_server
+handle_cast	./deps/ranch/src/ranch_server.erl	/^handle_cast({add_connection, Pid}, State) ->$/;"	f	module:ranch_server
+handle_cast	./deps/ranch/src/ranch_server.erl	/^handle_cast({insert_listener, Ref, Pid}, State=#state{monitors=Monitors}) ->$/;"	f	module:ranch_server
+handle_cast	./src/cpool_pooler.erl	/^handle_cast(_Msg, State) ->$/;"	f	module:cpool_pooler
+handle_cast	./src/cpool_pooler.erl	/^handle_cast({free_socket, Socket}, State) ->$/;"	f	module:cpool_pooler
+handle_cast	./src/reloader.erl	/^handle_cast(_Req, State) ->$/;"	f	module:reloader
+handle_info	./deps/ranch/src/ranch_listener.erl	/^handle_info(_Info, State) ->$/;"	f	module:ranch_listener
+handle_info	./deps/ranch/src/ranch_listener.erl	/^handle_info({'DOWN', _, process, _, _}, State=#state{rm_diff=0}) ->$/;"	f	module:ranch_listener
+handle_info	./deps/ranch/src/ranch_listener.erl	/^handle_info({'DOWN', _, process, _, _}, State=#state{rm_diff=RmDiff}) ->$/;"	f	module:ranch_listener
+handle_info	./deps/ranch/src/ranch_server.erl	/^handle_info(_Info, State) ->$/;"	f	module:ranch_server
+handle_info	./deps/ranch/src/ranch_server.erl	/^handle_info({'DOWN', MonitorRef, process, Pid, _},$/;"	f	module:ranch_server
+handle_info	./src/cpool_pooler.erl	/^handle_info(_Info, State) ->$/;"	f	module:cpool_pooler
+handle_info	./src/cpool_pooler.erl	/^handle_info(check_connect, State) ->$/;"	f	module:cpool_pooler
+handle_info	./src/cpool_pooler.erl	/^handle_info(reconnect, State) ->$/;"	f	module:cpool_pooler
+handle_info	./src/cpool_pooler.erl	/^handle_info({tcp_closed, Sock}, State) ->$/;"	f	module:cpool_pooler
+handle_info	./src/cpool_pooler.erl	/^handle_info({tcp_error, Error, Sock}, State) ->$/;"	f	module:cpool_pooler
+handle_info	./src/reloader.erl	/^handle_info(_Info, State) ->$/;"	f	module:reloader
+handle_info	./src/reloader.erl	/^handle_info(doit, State) ->$/;"	f	module:reloader
+init	./deps/ranch/examples/tcp_echo/src/echo_protocol.erl	/^init(ListenerPid, Socket, Transport, _Opts = []) ->$/;"	f	module:echo_protocol
+init	./deps/ranch/examples/tcp_echo/src/tcp_echo_sup.erl	/^init([]) ->$/;"	f	module:tcp_echo_sup
+init	./deps/ranch/src/ranch_acceptor.erl	/^init(LSocket, Transport, Protocol, MaxConns, Opts, ListenerPid, ConnsSup) ->$/;"	f	module:ranch_acceptor
+init	./deps/ranch/src/ranch_acceptors_sup.erl	/^init([Ref, NbAcceptors, Transport, TransOpts, Protocol]) ->$/;"	f	module:ranch_acceptors_sup
+init	./deps/ranch/src/ranch_conns_sup.erl	/^init(Ref) ->$/;"	f	module:ranch_conns_sup
+init	./deps/ranch/src/ranch_listener.erl	/^init([Ref, MaxConns, ProtoOpts]) ->$/;"	f	module:ranch_listener
+init	./deps/ranch/src/ranch_listener_sup.erl	/^init({Ref, NbAcceptors, MaxConns, Transport, TransOpts, Protocol, ProtoOpts}) ->$/;"	f	module:ranch_listener_sup
+init	./deps/ranch/src/ranch_server.erl	/^init([]) ->$/;"	f	module:ranch_server
+init	./deps/ranch/src/ranch_sup.erl	/^init([]) ->$/;"	f	module:ranch_sup
+init	./deps/ranch/test/active_echo_protocol.erl	/^init(ListenerPid, Socket, Transport, _Opts = []) ->$/;"	f	module:active_echo_protocol
+init	./deps/ranch/test/echo_protocol.erl	/^init(ListenerPid, Socket, Transport, _Opts = []) ->$/;"	f	module:echo_protocol
+init	./deps/ranch/test/notify_and_wait_protocol.erl	/^init(Msg, Pid) ->$/;"	f	module:notify_and_wait_protocol
+init	./deps/ranch/test/remove_conn_and_wait_protocol.erl	/^init(ListenerPid, MaybeRemove) ->$/;"	f	module:remove_conn_and_wait_protocol
+init	./src/cpool_pooler.erl	/^init([]) ->$/;"	f	module:cpool_pooler
+init	./src/cpool_sup.erl	/^init([]) ->$/;"	f	module:cpool_sup
+init	./src/reloader.erl	/^init([]) ->$/;"	f	module:reloader
+init	./src/server_protocol.erl	/^init(ListenerPid, Socket, Transport, _Opts = []) ->$/;"	f	module:server_protocol
+init_per_group	./deps/ranch/test/acceptor_SUITE.erl	/^init_per_group(_, Config) ->$/;"	f	module:acceptor_SUITE
+init_per_group	./deps/ranch/test/acceptor_SUITE.erl	/^init_per_group(ssl, Config) ->$/;"	f	module:acceptor_SUITE
+init_per_suite	./deps/ranch/test/acceptor_SUITE.erl	/^init_per_suite(Config) ->$/;"	f	module:acceptor_SUITE
+insert_listener	./deps/ranch/src/ranch_server.erl	/^insert_listener(Ref, Pid) ->$/;"	f	module:ranch_server
+is_changed	./src/reloader.erl	/^is_changed(M) ->$/;"	f	module:reloader
+listen	./deps/ranch/src/ranch_ssl.erl	/^listen(Opts) ->$/;"	f	module:ranch_ssl
+listen	./deps/ranch/src/ranch_tcp.erl	/^listen(Opts) ->$/;"	f	module:ranch_tcp
+lookup_connections_sup	./deps/ranch/src/ranch_server.erl	/^lookup_connections_sup(Ref) ->$/;"	f	module:ranch_server
+lookup_listener	./deps/ranch/src/ranch_server.erl	/^lookup_listener(Ref) ->$/;"	f	module:ranch_server
+loop	./deps/ranch/examples/tcp_echo/src/echo_protocol.erl	/^loop(Socket, Transport) ->$/;"	f	module:echo_protocol
+loop	./deps/ranch/src/ranch_acceptor.erl	/^loop(LSocket, Transport, Protocol, MaxConns, Opts, ListenerPid, ConnsSup) ->$/;"	f	module:ranch_acceptor
+loop	./deps/ranch/test/active_echo_protocol.erl	/^loop(Socket, Transport) ->$/;"	f	module:active_echo_protocol
+loop	./deps/ranch/test/echo_protocol.erl	/^loop(Socket, Transport) ->$/;"	f	module:echo_protocol
+loop	./src/server_protocol.erl	/^loop(Socket, Transport) ->$/;"	f	module:server_protocol
+loop1	./src/server_protocol.erl	/^loop1(Socket, Transport, PoolName, PoolSocket) ->$/;"	f	module:server_protocol
+maybe_wait	./deps/ranch/src/ranch_acceptor.erl	/^maybe_wait(ListenerPid, MaxConns, NbConns) ->$/;"	f	module:ranch_acceptor
+maybe_wait	./deps/ranch/src/ranch_acceptor.erl	/^maybe_wait(_, MaxConns, NbConns) when MaxConns > NbConns ->$/;"	f	module:ranch_acceptor
+memcached_respon	./src/cpool_mc_client.erl	/^memcached_respon(Bin, Socket, AllBin) ->$/;"	f	module:cpool_mc_client
+messages	./deps/ranch/src/ranch_ssl.erl	/^messages() -> {ssl, ssl_closed, ssl_error}.$/;"	f	module:ranch_ssl
+messages	./deps/ranch/src/ranch_tcp.erl	/^messages() -> {tcp, tcp_closed, tcp_error}.$/;"	f	module:ranch_tcp
+misc_bad_transport	./deps/ranch/test/acceptor_SUITE.erl	/^misc_bad_transport(_) ->$/;"	f	module:acceptor_SUITE
+module_vsn	./src/reloader.erl	/^module_vsn(L) when is_list(L) ->$/;"	f	module:reloader
+module_vsn	./src/reloader.erl	/^module_vsn({M, Beam, _Fn}) ->$/;"	f	module:reloader
+name	./deps/ranch/src/ranch_ssl.erl	/^name() -> ssl.$/;"	f	module:ranch_ssl
+name	./deps/ranch/src/ranch_tcp.erl	/^name() -> tcp.$/;"	f	module:ranch_tcp
+notify_and_wait_protocol	./deps/ranch/test/notify_and_wait_protocol.erl	/^-module(notify_and_wait_protocol).$/;"	m
+peername	./deps/ranch/src/ranch_ssl.erl	/^peername(Socket) ->$/;"	f	module:ranch_ssl
+peername	./deps/ranch/src/ranch_tcp.erl	/^peername(Socket) ->$/;"	f	module:ranch_tcp
+profile_output	./deps/ranch/src/ranch_app.erl	/^profile_output() ->$/;"	f	module:ranch_app
+ranch	./deps/ranch/src/ranch.erl	/^-module(ranch).$/;"	m
+ranch_acceptor	./deps/ranch/src/ranch_acceptor.erl	/^-module(ranch_acceptor).$/;"	m
+ranch_acceptors_sup	./deps/ranch/src/ranch_acceptors_sup.erl	/^-module(ranch_acceptors_sup).$/;"	m
+ranch_app	./deps/ranch/src/ranch_app.erl	/^-module(ranch_app).$/;"	m
+ranch_conns_sup	./deps/ranch/src/ranch_conns_sup.erl	/^-module(ranch_conns_sup).$/;"	m
+ranch_listener	./deps/ranch/src/ranch_listener.erl	/^-module(ranch_listener).$/;"	m
+ranch_listener_sup	./deps/ranch/src/ranch_listener_sup.erl	/^-module(ranch_listener_sup).$/;"	m
+ranch_protocol	./deps/ranch/src/ranch_protocol.erl	/^-module(ranch_protocol).$/;"	m
+ranch_server	./deps/ranch/src/ranch_server.erl	/^-module(ranch_server).$/;"	m
+ranch_ssl	./deps/ranch/src/ranch_ssl.erl	/^-module(ranch_ssl).$/;"	m
+ranch_sup	./deps/ranch/src/ranch_sup.erl	/^-module(ranch_sup).$/;"	m
+ranch_tcp	./deps/ranch/src/ranch_tcp.erl	/^-module(ranch_tcp).$/;"	m
+ranch_transport	./deps/ranch/src/ranch_transport.erl	/^-module(ranch_transport).$/;"	m
+receive_loop	./deps/ranch/test/acceptor_SUITE.erl	/^receive_loop(Message, Timeout) ->$/;"	f	module:acceptor_SUITE
+receive_loop	./deps/ranch/test/acceptor_SUITE.erl	/^receive_loop(Message, Timeout, N) ->$/;"	f	module:acceptor_SUITE
+reconnect	./src/cpool_pooler.erl	/^reconnect() ->$/;"	f	module:cpool_pooler
+recv	./deps/ranch/src/ranch_ssl.erl	/^recv(Socket, Length, Timeout) ->$/;"	f	module:ranch_ssl
+recv	./deps/ranch/src/ranch_tcp.erl	/^recv(Socket, Length, Timeout) ->$/;"	f	module:ranch_tcp
+reload	./src/reloader.erl	/^reload(Module) ->$/;"	f	module:reloader
+reload_modules	./src/reloader.erl	/^reload_modules(Modules) ->$/;"	f	module:reloader
+reloader	./src/reloader.erl	/^-module(reloader).$/;"	m
+remove_conn_and_wait_protocol	./deps/ranch/test/remove_conn_and_wait_protocol.erl	/^-module(remove_conn_and_wait_protocol).$/;"	m
+remove_connection	./deps/ranch/src/ranch_listener.erl	/^remove_connection(ServerPid) ->$/;"	f	module:ranch_listener
+remove_connection	./deps/ranch/src/ranch_server.erl	/^remove_connection(ListenerPid) ->$/;"	f	module:ranch_server
+remove_process	./deps/ranch/src/ranch_server.erl	/^remove_process(Key = {acceptors, _}, MonitorRef, Pid, Monitors) ->$/;"	f	module:ranch_server
+remove_process	./deps/ranch/src/ranch_server.erl	/^remove_process(Key = {listener, Ref}, MonitorRef, Pid, Monitors) ->$/;"	f	module:ranch_server
+require	./deps/ranch/src/ranch.erl	/^require([App|Tail]) ->$/;"	f	module:ranch
+require	./deps/ranch/src/ranch.erl	/^require([]) ->$/;"	f	module:ranch
+send	./deps/ranch/src/ranch_ssl.erl	/^send(Socket, Packet) ->$/;"	f	module:ranch_ssl
+send	./deps/ranch/src/ranch_tcp.erl	/^send(Socket, Packet) ->$/;"	f	module:ranch_tcp
+send_to_acceptors	./deps/ranch/src/ranch_server.erl	/^send_to_acceptors(Ref, Msg) ->$/;"	f	module:ranch_server
+sendfile	./deps/ranch/src/ranch_ssl.erl	/^sendfile(Socket, Filepath) ->$/;"	f	module:ranch_ssl
+sendfile	./deps/ranch/src/ranch_ssl.erl	/^sendfile(Socket, IoDevice, Sent) ->$/;"	f	module:ranch_ssl
+sendfile	./deps/ranch/src/ranch_tcp.erl	/^sendfile(Socket, Filename) ->$/;"	f	module:ranch_tcp
+server_protocol	./src/server_protocol.erl	/^-module(server_protocol).$/;"	m
+set_connections_sup	./deps/ranch/src/ranch_server.erl	/^set_connections_sup(Ref, Pid) ->$/;"	f	module:ranch_server
+set_max_connections	./deps/ranch/src/ranch.erl	/^set_max_connections(Ref, MaxConnections) ->$/;"	f	module:ranch
+set_max_connections	./deps/ranch/src/ranch_listener.erl	/^set_max_connections(ServerPid, MaxConnections) ->$/;"	f	module:ranch_listener
+set_option_default	./deps/ranch/src/ranch.erl	/^set_option_default(Opts, Key, Value) ->$/;"	f	module:ranch
+set_port	./deps/ranch/src/ranch_listener.erl	/^set_port(ServerPid, Port) ->$/;"	f	module:ranch_listener
+set_protocol_options	./deps/ranch/src/ranch.erl	/^set_protocol_options(Ref, ProtoOpts) ->$/;"	f	module:ranch
+set_protocol_options	./deps/ranch/src/ranch_listener.erl	/^set_protocol_options(ServerPid, ProtoOpts) ->$/;"	f	module:ranch_listener
+setopts	./deps/ranch/src/ranch_ssl.erl	/^setopts(Socket, Opts) ->$/;"	f	module:ranch_ssl
+setopts	./deps/ranch/src/ranch_tcp.erl	/^setopts(Socket, Opts) ->$/;"	f	module:ranch_tcp
+sockname	./deps/ranch/src/ranch_ssl.erl	/^sockname(Socket) ->$/;"	f	module:ranch_ssl
+sockname	./deps/ranch/src/ranch_tcp.erl	/^sockname(Socket) ->$/;"	f	module:ranch_tcp
+ssl_accept	./deps/ranch/src/ranch_ssl.erl	/^ssl_accept(Socket, Timeout) ->$/;"	f	module:ranch_ssl
+ssl_accept_error	./deps/ranch/test/acceptor_SUITE.erl	/^ssl_accept_error(Config) ->$/;"	f	module:acceptor_SUITE
+ssl_accept_socket	./deps/ranch/test/acceptor_SUITE.erl	/^ssl_accept_socket(Config) ->$/;"	f	module:acceptor_SUITE
+ssl_active_echo	./deps/ranch/test/acceptor_SUITE.erl	/^ssl_active_echo(Config) ->$/;"	f	module:acceptor_SUITE
+ssl_echo	./deps/ranch/test/acceptor_SUITE.erl	/^ssl_echo(Config) ->$/;"	f	module:acceptor_SUITE
+stamp	./src/reloader.erl	/^stamp() ->$/;"	f	module:reloader
+start	./deps/ranch/examples/tcp_echo/src/tcp_echo.erl	/^start() ->$/;"	f	module:tcp_echo
+start	./deps/ranch/examples/tcp_echo/src/tcp_echo_app.erl	/^start(_Type, _Args) ->$/;"	f	module:tcp_echo_app
+start	./deps/ranch/src/ranch_app.erl	/^start(_, _) ->$/;"	f	module:ranch_app
+start	./src/cpool.erl	/^start() ->$/;"	f	module:cpool
+start	./src/cpool_app.erl	/^start(_StartType, _StartArgs) ->$/;"	f	module:cpool_app
+start	./src/cpool_pooler.erl	/^start(PoolName) ->       $/;"	f	module:cpool_pooler
+start	./src/reloader.erl	/^start() ->$/;"	f	module:reloader
+start_link	./deps/ranch/examples/tcp_echo/src/echo_protocol.erl	/^start_link(ListenerPid, Socket, Transport, Opts) ->$/;"	f	module:echo_protocol
+start_link	./deps/ranch/examples/tcp_echo/src/tcp_echo_sup.erl	/^start_link() ->$/;"	f	module:tcp_echo_sup
+start_link	./deps/ranch/src/ranch_acceptor.erl	/^start_link(Ref, LSocket, Transport, Protocol, ListenerPid, ConnsSup) ->$/;"	f	module:ranch_acceptor
+start_link	./deps/ranch/src/ranch_acceptors_sup.erl	/^start_link(Ref, NbAcceptors, Transport, TransOpts, Protocol) ->$/;"	f	module:ranch_acceptors_sup
+start_link	./deps/ranch/src/ranch_conns_sup.erl	/^start_link(Ref) ->$/;"	f	module:ranch_conns_sup
+start_link	./deps/ranch/src/ranch_listener.erl	/^start_link(Ref, MaxConns, ProtoOpts) ->$/;"	f	module:ranch_listener
+start_link	./deps/ranch/src/ranch_listener_sup.erl	/^start_link(Ref, NbAcceptors, Transport, TransOpts, Protocol, ProtoOpts) ->$/;"	f	module:ranch_listener_sup
+start_link	./deps/ranch/src/ranch_server.erl	/^start_link() ->$/;"	f	module:ranch_server
+start_link	./deps/ranch/src/ranch_sup.erl	/^start_link() ->$/;"	f	module:ranch_sup
+start_link	./deps/ranch/test/active_echo_protocol.erl	/^start_link(ListenerPid, Socket, Transport, Opts) ->$/;"	f	module:active_echo_protocol
+start_link	./deps/ranch/test/echo_protocol.erl	/^start_link(ListenerPid, Socket, Transport, Opts) ->$/;"	f	module:echo_protocol
+start_link	./deps/ranch/test/notify_and_wait_protocol.erl	/^start_link(_, _, _, [{msg, Msg}, {pid, TestPid}]) ->$/;"	f	module:notify_and_wait_protocol
+start_link	./deps/ranch/test/remove_conn_and_wait_protocol.erl	/^start_link(ListenerPid, _, _, [{remove, MaybeRemove}]) ->$/;"	f	module:remove_conn_and_wait_protocol
+start_link	./src/cpool_pooler.erl	/^start_link(PoolName) ->$/;"	f	module:cpool_pooler
+start_link	./src/cpool_sup.erl	/^start_link() ->$/;"	f	module:cpool_sup
+start_link	./src/reloader.erl	/^start_link() ->$/;"	f	module:reloader
+start_link	./src/server_protocol.erl	/^start_link(ListenerPid, Socket, Transport, Opts) ->$/;"	f	module:server_protocol
+start_listener	./deps/ranch/src/ranch.erl	/^start_listener(Ref, NbAcceptors, Transport, TransOpts, Protocol, ProtoOpts)$/;"	f	module:ranch
+start_protocol	./deps/ranch/src/ranch_conns_sup.erl	/^start_protocol(ListenerPid, Socket, Transport, Protocol, Opts) ->$/;"	f	module:ranch_conns_sup
+state	./deps/ranch/src/ranch_listener.erl	/^-record(state, {$/;"	r
+state	./deps/ranch/src/ranch_server.erl	/^-record(state, {$/;"	r
+state	./src/reloader.erl	/^-record(state, {last, tref}).$/;"	r
+states	./src/cpool_pooler.erl	/^-record(states, {sockets, numbers}).$/;"	r
+status	./src/cpool.erl	/^status() ->$/;"	f	module:cpool
+status	./src/cpool_pooler.erl	/^status(PoolName) -> $/;"	f	module:cpool_pooler
+stop	./deps/ranch/examples/tcp_echo/src/tcp_echo_app.erl	/^stop(_State) ->$/;"	f	module:tcp_echo_app
+stop	./deps/ranch/src/ranch_app.erl	/^stop(_) ->$/;"	f	module:ranch_app
+stop	./deps/ranch/src/ranch_listener.erl	/^stop(ServerPid) ->$/;"	f	module:ranch_listener
+stop	./src/cpool_app.erl	/^stop(_State) ->$/;"	f	module:cpool_app
+stop	./src/cpool_pooler.erl	/^stop(PoolName) ->$/;"	f	module:cpool_pooler
+stop	./src/reloader.erl	/^stop() ->$/;"	f	module:reloader
+stop_listener	./deps/ranch/src/ranch.erl	/^stop_listener(Ref) ->$/;"	f	module:ranch
+supervisor_clean_child_restart	./deps/ranch/test/acceptor_SUITE.erl	/^supervisor_clean_child_restart(_) ->$/;"	f	module:acceptor_SUITE
+supervisor_clean_restart	./deps/ranch/test/acceptor_SUITE.erl	/^supervisor_clean_restart(_) ->$/;"	f	module:acceptor_SUITE
+supervisor_conns_alive	./deps/ranch/test/acceptor_SUITE.erl	/^supervisor_conns_alive(_) ->$/;"	f	module:acceptor_SUITE
+tcp_accept_socket	./deps/ranch/test/acceptor_SUITE.erl	/^tcp_accept_socket(_) ->$/;"	f	module:acceptor_SUITE
+tcp_active_echo	./deps/ranch/test/acceptor_SUITE.erl	/^tcp_active_echo(_) ->$/;"	f	module:acceptor_SUITE
+tcp_echo	./deps/ranch/examples/tcp_echo/src/tcp_echo.erl	/^-module(tcp_echo).$/;"	m
+tcp_echo	./deps/ranch/test/acceptor_SUITE.erl	/^tcp_echo(_) ->$/;"	f	module:acceptor_SUITE
+tcp_echo_app	./deps/ranch/examples/tcp_echo/src/tcp_echo_app.erl	/^-module(tcp_echo_app).$/;"	m
+tcp_echo_sup	./deps/ranch/examples/tcp_echo/src/tcp_echo_sup.erl	/^-module(tcp_echo_sup).$/;"	m
+tcp_max_connections	./deps/ranch/test/acceptor_SUITE.erl	/^tcp_max_connections(_) ->$/;"	f	module:acceptor_SUITE
+tcp_max_connections_and_beyond	./deps/ranch/test/acceptor_SUITE.erl	/^tcp_max_connections_and_beyond(_) ->$/;"	f	module:acceptor_SUITE
+tcp_set_max_connections	./deps/ranch/test/acceptor_SUITE.erl	/^tcp_set_max_connections(_) ->$/;"	f	module:acceptor_SUITE
+tcp_upgrade	./deps/ranch/test/acceptor_SUITE.erl	/^tcp_upgrade(_) ->$/;"	f	module:acceptor_SUITE
+terminate	./deps/ranch/src/ranch_listener.erl	/^terminate(_Reason, _State) ->$/;"	f	module:ranch_listener
+terminate	./deps/ranch/src/ranch_server.erl	/^terminate(_Reason, _State) ->$/;"	f	module:ranch_server
+terminate	./src/cpool_pooler.erl	/^terminate(_Reason, _State) ->$/;"	f	module:cpool_pooler
+terminate	./src/reloader.erl	/^terminate(_Reason, State) ->$/;"	f	module:reloader
+test	./src/cpool.erl	/^test() ->$/;"	f	module:cpool
