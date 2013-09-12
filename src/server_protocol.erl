@@ -16,7 +16,7 @@ loop(Socket, Transport) ->
 			%?dbg2("server received : ~p", [Bin]),
 			Data = get_all_socket_buffer(Transport, Socket, Bin, <<>>),
 			PoolName = get_rand_pool_name(),
-			PoolSocket = cpool_pooler:get_socket(PoolName),
+			PoolSocket = cpool_pooler:checkOut(PoolName),
 			Respond = case cpool_mc_client:send(PoolSocket, Data) of
 				{error, _} ->
 					%close it,if the PoolSocket is not alived;
@@ -36,7 +36,7 @@ loop(Socket, Transport) ->
 loop1(Socket, Transport, PoolName, PoolSocket) ->
     case Transport:recv(Socket, 0, 5000) of
         {ok, <<"quit\r\n">>} ->
-            cpool_pooler:free_socket(PoolName, PoolSocket),
+            cpool_pooler:checkIn(PoolName, PoolSocket),
             ok = Transport:close(Socket);
 
         {ok, Bin} ->
@@ -51,7 +51,7 @@ loop1(Socket, Transport, PoolName, PoolSocket) ->
             Transport:send(Socket, Respond),
             loop1(Socket, Transport, PoolName, PoolSocket);
         _ ->
-            cpool_pooler:free_socket(PoolName, PoolSocket),
+            cpool_pooler:checkIn(PoolName, PoolSocket),
             ok = Transport:close(Socket)
     end.
 

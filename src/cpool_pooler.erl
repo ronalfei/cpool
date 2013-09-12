@@ -36,9 +36,17 @@ start_link(PoolName) ->
 stop(PoolName) ->
     gen_server:call(PoolName, stop).
 
+checkOut(PoolName) ->
+	%?dbg2("Get Socket PoolName : ~p ~n",[PoolName]),
+	gen_server:call(PoolName, get_socket).
+
 get_socket(PoolName) ->
 	%?dbg2("Get Socket PoolName : ~p ~n",[PoolName]),
 	gen_server:call(PoolName, get_socket).
+
+checkIn(PoolName,Socket) ->
+	%?dbg2("Free Socket PoolName : ~p ~n",[PoolName]),
+	gen_server:cast(PoolName, {free_socket, Socket}).
 
 free_socket(PoolName,Socket) ->
 	%?dbg2("Free Socket PoolName : ~p ~n",[PoolName]),
@@ -189,7 +197,7 @@ handle_info(check_connect, State) ->
 			?dbg1("done................."),
     		{noreply, #states{ sockets=[TSocket], numbers=Numbers-1 }};
 		 true  ->
-			%?dbg1("done................."),
+			?dbg1("......check connections done......"),
 		 	{noreply, State}
 	end;
 
