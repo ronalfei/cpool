@@ -46,8 +46,10 @@ connect(Config, Opt) ->
 	[{host,Host},{port,Port},{timeout,Timeout}] = Config,
 	gen_tcp:connect(Host,Port,[binary,{packet,0},{active, Opt}, {send_timeout, 5000}],Timeout).
 
-%%@fetch raw data
-fetch(Socket,RawData) ->
+%@ send req raw data
+%@ and return raw data
+
+send(Socket,RawData) ->
 	case Socket of 
 		{error,EReason} ->
 			?dbg2("Get socket from pool failed: ~p",[EReason]),

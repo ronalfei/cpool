@@ -17,7 +17,7 @@ loop(Socket, Transport) ->
 			Data = get_all_socket_buffer(Transport, Socket, Bin, <<>>),
 			PoolName = get_rand_pool_name(),
 			PoolSocket = cpool_pooler:get_socket(PoolName),
-			Respond = case cpool_mc_client:raw(PoolSocket, Data) of
+			Respond = case cpool_mc_client:send(PoolSocket, Data) of
 				{error, _} ->
 					%close it,if the PoolSocket is not alived;
 					gen_tcp:close(PoolSocket), 
@@ -38,7 +38,7 @@ loop1(Socket, Transport, PoolName, PoolSocket) ->
         {ok, Bin} ->
 			%?dbg2("server received1 : ~p", [Bin]),
 			Data = get_all_socket_buffer(Transport, Socket, Bin, <<>>),
-            Respond = case cpool_mc_client:raw(PoolSocket,Data) of
+            Respond = case cpool_mc_client:send(PoolSocket,Data) of
                 {error, closed} -> gen_tcp:close(PoolSocket), <<"Pool connection closed\r\n">> ; %close it,if the PoolSocket is not alived;
                 {_Any, Ret} -> 
                     %?dbg2("what is any: ~p", [_Any]),

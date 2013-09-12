@@ -68,7 +68,6 @@ echo_protocol	./deps/ranch/test/echo_protocol.erl	/^-module(echo_protocol).$/;"	
 end_per_group	./deps/ranch/test/acceptor_SUITE.erl	/^end_per_group(_, _) ->$/;"	f	module:acceptor_SUITE
 end_per_group	./deps/ranch/test/acceptor_SUITE.erl	/^end_per_group(ssl, _) ->$/;"	f	module:acceptor_SUITE
 end_per_suite	./deps/ranch/test/acceptor_SUITE.erl	/^end_per_suite(_) ->$/;"	f	module:acceptor_SUITE
-fetch	./src/cpool_mc_client.erl	/^fetch(Socket,RawData) ->$/;"	f	module:cpool_mc_client
 filter_options	./deps/ranch/src/ranch.erl	/^filter_options([Opt = {Key, _}|Tail], AllowedKeys, Acc) ->$/;"	f	module:ranch
 filter_options	./deps/ranch/src/ranch.erl	/^filter_options([], _, Acc) ->$/;"	f	module:ranch
 free_socket	./src/cpool_pooler.erl	/^free_socket(PoolName,Socket) ->$/;"	f	module:cpool_pooler
@@ -198,6 +197,7 @@ require	./deps/ranch/src/ranch.erl	/^require([App|Tail]) ->$/;"	f	module:ranch
 require	./deps/ranch/src/ranch.erl	/^require([]) ->$/;"	f	module:ranch
 send	./deps/ranch/src/ranch_ssl.erl	/^send(Socket, Packet) ->$/;"	f	module:ranch_ssl
 send	./deps/ranch/src/ranch_tcp.erl	/^send(Socket, Packet) ->$/;"	f	module:ranch_tcp
+send	./src/cpool_mc_client.erl	/^send(Socket,RawData) ->$/;"	f	module:cpool_mc_client
 send_to_acceptors	./deps/ranch/src/ranch_server.erl	/^send_to_acceptors(Ref, Msg) ->$/;"	f	module:ranch_server
 sendfile	./deps/ranch/src/ranch_ssl.erl	/^sendfile(Socket, Filepath) ->$/;"	f	module:ranch_ssl
 sendfile	./deps/ranch/src/ranch_ssl.erl	/^sendfile(Socket, IoDevice, Sent) ->$/;"	f	module:ranch_ssl
