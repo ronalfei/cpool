@@ -1,6 +1,7 @@
 
 %%is display the debug info
--define(DEBUG, true).
+%-define(DEBUG, true).
+%-define(DEBUG, false).
 -ifdef(DEBUG).
 -define(dbg1(Data), io:format("*dbg ~p:~p: ~p ~n", [?MODULE, ?LINE, Data])).
 -define(dbg2(Fmt,Data), io:format("*dbg ~p:~p: "++Fmt++"~n ", [?MODULE, ?LINE | Data])).
